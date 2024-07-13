@@ -1,0 +1,6 @@
+
+b	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(ÊÈ®è8 —ÊãŠ2
+g	java:S1123"FDefine and throw a dedicated exception instead of using a generic one.(¶÷ë‘ıÿÿÿÿ8¡—ÊãŠ2
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC8¢—ÊãŠ2
+j
+java:S1128"MRemove this unused import 'org.openqa.selenium.support.ui.ExpectedCondition'.(Ü¥ö’8ï—ÊãŠ2
