@@ -19,3 +19,15 @@ L
 src/test/java/CartTests.java,3\b\3b12afeb93545c3b2bb740ea648ebf1d184b60cf
 Q
 !src/main/java/Pages/CartPage.java,8\7\873dc882ef86d9c713a97e4cc4935e23a2573c84
+w
+G.idea/sonarlint/issuestore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,b\7\b7995c3d41886bad0e7a5d302fbde52ede45cf17
+Å
+Q.idea/sonarlint/securityhotspotstore/6/f/6f58a72ab3a5a9b3e82db0a20428428d8fe4770a,c\8\c813bfb35069324bb1b7ad7c4ca57b18f7bf9fc8
+Å
+Q.idea/sonarlint/securityhotspotstore/8/7/873dc882ef86d9c713a97e4cc4935e23a2573c84,3\7\37529414900a42de96efc3ca893225bdfcaf7c02
+Å
+Q.idea/sonarlint/securityhotspotstore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,d\6\d68997b117a4738704486870a3f981c28fe1f198
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
