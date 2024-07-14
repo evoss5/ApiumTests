@@ -1,0 +1,6 @@
+
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ΆςC8Ρ¥ζ‹2
+d
+java:S2094"BRemove this empty class, write its code or make it an "interface".(Εάδÿÿÿÿÿ8Ò¥ζ‹2
+\
+java:S1128"?Remove this unused import 'io.appium.java_client.AppiumDriver'.(ς‹­8Σ¥ζ‹2
