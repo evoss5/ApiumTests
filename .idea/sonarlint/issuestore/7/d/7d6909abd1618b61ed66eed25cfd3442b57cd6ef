@@ -1,3 +1,5 @@
 
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ΆςC8„Ò¬δ2
-o	java:S100#"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(άρ‚¬ÿÿÿÿÿ8Ò¬δ2
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ΆςC8Ώ«Ξ‘‹2
+o	java:S100&"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(άρ‚¬ÿÿÿÿÿ8χΆΠ‘‹2
+a
+java:S1128"?Remove this unused import 'org.openqa.selenium.support.FindBy'.(¶Ί΄ιωÿÿÿÿ8²†’‹2

@@ -4,9 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -20,7 +18,7 @@ public class BaseTest {
     protected HomePage home;
     protected LoginPage login;
 
-    @BeforeTest
+    @BeforeMethod(alwaysRun = true)
     public void setup() throws MalformedURLException {
         String appiumServerUrl = "http://127.0.0.1:4723";
 
@@ -34,23 +32,9 @@ public class BaseTest {
         home = new HomePage(driver);
 
     }
-
-    @Test
-    public void test() {
-//   driver.findElement(AppiumBy.accessibilityId("open menu")).click();
-        home.mainHeaderClick();
-        login = home.goToLoginPage();
-        login.usernameFieldFill("maciek123@wp.pl");
-        login.passwordFieldFill("maciej123!");
-        login.loginButtonClick();
-        Assert.assertTrue(login.IsPasswordErrorMessageVisible(), "There is no message");
-
-    }
-
 //    @AfterTest
 //    public void close() {
 //        driver.quit();
 //    }
-
 }
 
