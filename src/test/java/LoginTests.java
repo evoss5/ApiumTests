@@ -15,7 +15,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(login.IsPasswordErrorMessageVisible(), "There is no message");
     }
 
-    @Test
+    @Test(groups = {"group1"})
     public void successfulLogIn() {
         home.hamburgerMenuClick();
         login = home.goToLoginPage();
@@ -24,7 +24,7 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(home.isMainBannerVisible());
     }
     @Test
-    public void logOutFromAccount() {
+    public void logOutFromAccount()  {
         home.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
@@ -34,8 +34,6 @@ public class LoginTests extends BaseTest {
         home.logOutFromAccount();
         home.logOutAcceptButtonClick();
         Assert.assertTrue(home.isSuccessfulyLoggedOutMessageVisible(), "Successfuly Logged Out messsage is not visible");
-
-
     }
 
 

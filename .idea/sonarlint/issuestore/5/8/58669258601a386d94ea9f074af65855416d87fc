@@ -1,6 +1,0 @@
-
-~
-java:S1488I"\Immediately return this expression instead of assigning it to the temporary variable "text".(¬ÿ¢¨þÿÿÿÿ8£òÓ’‹2
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC8£òÓ’‹2
-^
-java:S3252I"<Use static access with "org.openqa.selenium.By" for "xpath".(¬ÿ¢¨þÿÿÿÿ8®òÓ’‹2

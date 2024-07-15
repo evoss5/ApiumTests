@@ -1,5 +1,6 @@
-import Pages.HomePage;
-import Pages.LoginPage;
+import Pages.HomeScreen;
+import Pages.LoginScreen;
+import Pages.NavigationBar;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
@@ -15,8 +16,9 @@ public class BaseTest {
     @AndroidFindBy(accessibility = "longpress reset app\n")
 //    @AndroidFindBy(uiAutomator = )
     private WebElement mainHeader;
-    protected HomePage home;
-    protected LoginPage login;
+    protected HomeScreen home;
+    protected LoginScreen login;
+    protected NavigationBar navigate;
 
     @BeforeMethod(alwaysRun = true)
     public void setup() throws MalformedURLException {
@@ -29,7 +31,8 @@ public class BaseTest {
         dc.setCapability("appium:app", "D://Appium//Apps//myDemoApp.apk");
 
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
-        home = new HomePage(driver);
+        navigate = new NavigationBar(driver);
+        home = new HomeScreen(driver);
 
     }
 //    @AfterTest
