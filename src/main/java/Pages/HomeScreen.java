@@ -7,7 +7,14 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Pause;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.time.Duration;
+import java.util.Collections;
 
 public class HomeScreen extends BaseScreen {
 
@@ -31,6 +38,8 @@ public class HomeScreen extends BaseScreen {
     private WebElement successfulyLoggedOutMessage;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"cart badge\"]/android.widget.ImageView\n")
     private WebElement cartButton;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Api Calls\"]\n")
+    private WebElement apiCallsButton;
 
 
     public HomeScreen(AndroidDriver driver) {
@@ -76,33 +85,73 @@ public class HomeScreen extends BaseScreen {
                 "//android.widget.TextView[@text=\"1\"]")).getAttribute("text");
         return text;
     }
+
     public boolean isMainBannerVisible() {
-         wait.until(ExpectedConditions.visibilityOf(mainBanner));
-         return true;
+        wait.until(ExpectedConditions.visibilityOf(mainBanner));
+        return true;
     }
+
     public HomeScreen logOutFromAccount() {
         clickElement(logOutButton);
         return this;
     }
+
     public HomeScreen logOutAcceptButtonClick() {
         clickElement(logOutAcceptButton);
         return this;
     }
+
     public boolean isSuccessfulyLoggedOutMessageVisible() {
         wait.until(ExpectedConditions.visibilityOf(successfulyLoggedOutMessage));
         return true;
     }
+
     public CartScreen goToCartPage() {
         clickElement(cartButton);
         return new CartScreen(driver);
     }
+
     public HomeScreen chooseProductsColor(String color) {
         WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"" + color + " circle\"]/android.view.ViewGroup\n"));
         clickElement(productColor);
         return this;
     }
-    public HomeScreen clickSthButton(){
+
+    public HomeScreen clickSthButton() {
         driver.pressKey(new KeyEvent(AndroidKey.HOME));
         return this;
     }
+
+    public HomeScreen touchActionsTest() {
+        Actions actions = new Actions(driver);
+        actions.moveToLocation(122, 160).perform();
+        return this;
+    }
+
+    public HomeScreen swipe(int xStart, int yStart, int xEnd, int yEnd) {
+        PointerInput point = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+
+        Sequence swipe = new Sequence(point, 1).addAction(point.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), xStart, yStart))
+                .addAction(point.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                .addAction(new Pause(point, Duration.ofMillis(200)))
+                .addAction(point.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), xEnd, yEnd))
+                .addAction(point.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(Collections.singletonList(swipe));
+        return this;
+    }
+
+    public HomeScreen apiCallsButtonClick() {
+        clickElement(apiCallsButton);
+        return this;
+    }
+
+    public HomeScreen setRating(int rate) {
+        driver.findElement(By.xpath("(//android.widget.TextView[@text=\"\uDB81\uDCCF\"])[" + rate + "]")).click();
+        return this;
+    }
+
 }
+
+
+
+

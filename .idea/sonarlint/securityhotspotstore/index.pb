@@ -16,8 +16,6 @@ G.idea/sonarlint/issuestore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,b\7\b7
 Å
 Q.idea/sonarlint/securityhotspotstore/6/f/6f58a72ab3a5a9b3e82db0a20428428d8fe4770a,c\8\c813bfb35069324bb1b7ad7c4ca57b18f7bf9fc8
 Å
-Q.idea/sonarlint/securityhotspotstore/8/7/873dc882ef86d9c713a97e4cc4935e23a2573c84,3\7\37529414900a42de96efc3ca893225bdfcaf7c02
-Å
 Q.idea/sonarlint/securityhotspotstore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,d\6\d68997b117a4738704486870a3f981c28fe1f198
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
@@ -34,5 +32,5 @@ S
 :
 
 testng.xml,5\2\522a7a4e21649af06297e31a9e33f13bb4fd3022
-V
-&src/main/java/Pages/NavigationBar.java,4\a\4a16dac4a89c623ae5b5d34a83578e5835b1b667
+\
+,src/main/java/Pages/NativeDeviceActions.java,8\9\89a66a18df7915102a7423f87d00c284ddff3bff

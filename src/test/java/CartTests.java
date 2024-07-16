@@ -1,4 +1,5 @@
 import Pages.CartScreen;
+import Pages.NativeDeviceActions;
 import io.appium.java_client.android.AndroidDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,6 +9,7 @@ public class CartTests extends BaseTest {
     public AndroidDriver driver;
     public CartScreen cart;
     public Service service;
+    public NativeDeviceActions natives;
 
     @Test
     public void removeItemsFromCart() {
@@ -18,12 +20,14 @@ public class CartTests extends BaseTest {
         cart.removeItem();
         Assert.assertTrue(cart.isNoItemsInCartMessageVisible(), "There are still some items in Cart");
     }
+
     @Test
     public void addProductToCart() {
         home.chooseProductToBuy("Sauce Labs Backpack");
         home.scrollDownToText("Add To Cart");
         home.addToCartClick();
     }
+
     @Test
     public void increaseNumberOfItemsBought() {
         home.chooseProductToBuy("Sauce Labs Backpack");
@@ -32,6 +36,7 @@ public class CartTests extends BaseTest {
         Assert.assertNotEquals(home.checkIfNumberOfProductsIsNotEvenOne(), 1);
         // TODO: 14.07.2024 Sprawdzić jeszcze raz asercję
     }
+
     @Test
     public void proceedToCheckout() {
         home.hamburgerMenuClick();
@@ -46,6 +51,7 @@ public class CartTests extends BaseTest {
         cart.proceedToCheckoutButtonClick();
 
     }
+
     @Test
     public void checkIfYouCanProceedToPaymentIfSomeDataIsNotFilled() {
         home.hamburgerMenuClick();
@@ -120,6 +126,7 @@ public class CartTests extends BaseTest {
         cart.placeOrderButtonClick();
         Assert.assertTrue(cart.isCheckoutCompleteMessageVisible(), "Checkout complete message is not visible");
     }
+
     @Test
     public void checkIfColorOfTheProductsIsChanged() {
         home.hamburgerMenuClick();
@@ -129,6 +136,40 @@ public class CartTests extends BaseTest {
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy("Sauce Labs Backpack");
         home.chooseProductsColor("red");
+    }
+
+    @Test
+    public void CheckIfYouCanSetRating() throws InterruptedException {
+        home.hamburgerMenuClick();
+        login = home.goToLoginPage();
+        login.logInAsExistingUser();
+        login.loginButtonClick();
+        Assert.assertTrue(home.isMainBannerVisible());
+        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.setRating(2);
+        //todo asercja dodać
+    }
+
+    @Test
+    public void swipeTest() throws InterruptedException {
+        home.hamburgerMenuClick();
+        home.apiCallsButtonClick();
+        Thread.sleep(3000);
+        home.swipe(719, 1331,784, 51);
+    }
+    @Test
+    public void lockAndUnlockPhone() {
+        natives = new NativeDeviceActions(driver);
+        natives.lockDevice();
+        natives.unlockDevice();
+
+    }
+    @Test
+    public void checkIfTheAppIsClosingDown() {
+        home.hamburgerMenuClick();
+        home.apiCallsButtonClick();
+        natives = new NativeDeviceActions(driver);
+        natives.closeApp();
     }
 }
 

@@ -1,6 +1,6 @@
 import Pages.HomeScreen;
 import Pages.LoginScreen;
-import Pages.NavigationBar;
+import Pages.NativeDeviceActions;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
@@ -18,7 +18,7 @@ public class BaseTest {
     private WebElement mainHeader;
     protected HomeScreen home;
     protected LoginScreen login;
-    protected NavigationBar navigate;
+    protected NativeDeviceActions navigate;
 
     @BeforeMethod(alwaysRun = true)
     public void setup() throws MalformedURLException {
@@ -30,8 +30,9 @@ public class BaseTest {
         dc.setCapability("appium:automationName", "uiAutomator2");
         dc.setCapability("appium:app", "D://Appium//Apps//myDemoApp.apk");
 
+
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
-        navigate = new NavigationBar(driver);
+        navigate = new NativeDeviceActions(driver);
         home = new HomeScreen(driver);
 
     }
