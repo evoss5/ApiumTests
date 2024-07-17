@@ -2,8 +2,11 @@ import io.appium.java_client.android.AndroidDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class LoginTests extends BaseTest {
     public AndroidDriver driver;
+    public Service service;
 
     @Test
     public void unsuccessfulLogIn() {
@@ -34,6 +37,15 @@ public class LoginTests extends BaseTest {
         home.logOutFromAccount();
         home.logOutAcceptButtonClick();
         Assert.assertTrue(home.isSuccessfulyLoggedOutMessageVisible(), "Successfuly Logged Out messsage is not visible");
+    }
+    @Test
+    private void logInByCredentials() throws IOException {
+        home.hamburgerMenuClick();
+        login = home.goToLoginPage();
+        service = new Service(driver);
+        login.usernameFieldFill(service.getCredential("loginNative"));
+        login.passwordFieldFill(service.getCredential("passwordNative"));
+        login.loginButtonClick();
     }
 
 

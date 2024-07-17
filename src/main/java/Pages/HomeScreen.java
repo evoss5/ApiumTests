@@ -8,15 +8,11 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.Pause;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.time.Duration;
-import java.util.Collections;
-
 public class HomeScreen extends BaseScreen {
+
+
 
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.ViewGroup\").instance(47)\n")
     private WebElement mainBanner;
@@ -40,6 +36,8 @@ public class HomeScreen extends BaseScreen {
     private WebElement cartButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Api Calls\"]\n")
     private WebElement apiCallsButton;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Webview\"]\n")
+    private WebElement webViewButton;
 
 
     public HomeScreen(AndroidDriver driver) {
@@ -128,15 +126,8 @@ public class HomeScreen extends BaseScreen {
         return this;
     }
 
-    public HomeScreen swipe(int xStart, int yStart, int xEnd, int yEnd) {
-        PointerInput point = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-
-        Sequence swipe = new Sequence(point, 1).addAction(point.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), xStart, yStart))
-                .addAction(point.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-                .addAction(new Pause(point, Duration.ofMillis(200)))
-                .addAction(point.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), xEnd, yEnd))
-                .addAction(point.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-        driver.perform(Collections.singletonList(swipe));
+    public HomeScreen swipe() {
+        natives.swipeManyTimes(3);
         return this;
     }
 
@@ -149,6 +140,12 @@ public class HomeScreen extends BaseScreen {
         driver.findElement(By.xpath("(//android.widget.TextView[@text=\"\uDB81\uDCCF\"])[" + rate + "]")).click();
         return this;
     }
+    public WebViewHandle goToWebView() {
+        clickElement(webViewButton);
+        return new WebViewHandle(driver);
+    }
+
+
 
 }
 

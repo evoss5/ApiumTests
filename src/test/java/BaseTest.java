@@ -29,6 +29,9 @@ public class BaseTest {
         dc.setCapability("platformName", "Android");
         dc.setCapability("appium:automationName", "uiAutomator2");
         dc.setCapability("appium:app", "D://Appium//Apps//myDemoApp.apk");
+        dc.setCapability("chromedriverExecutable", "C://driverForAppium/chromedriver.exe");
+
+
 
 
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);

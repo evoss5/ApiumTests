@@ -1,6 +1,9 @@
 import io.appium.java_client.android.AndroidDriver;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Random;
 
 public class Service {
@@ -50,6 +53,10 @@ public class Service {
         return String.valueOf(random.nextInt(100, 999));
 
     }
-
-
-}
+    public String getCredential(String credentialName) throws IOException {
+        FileReader reader = new FileReader("credentials");
+        Properties properties = new Properties();
+        properties.load(reader);
+        return properties.getProperty(credentialName);
+    }
+    }

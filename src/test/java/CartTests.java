@@ -11,6 +11,7 @@ public class CartTests extends BaseTest {
     public Service service;
     public NativeDeviceActions natives;
 
+
     @Test
     public void removeItemsFromCart() {
         home.chooseProductToBuy("Sauce Labs Backpack");
@@ -155,8 +156,9 @@ public class CartTests extends BaseTest {
         home.hamburgerMenuClick();
         home.apiCallsButtonClick();
         Thread.sleep(3000);
-        home.swipe(719, 1331,784, 51);
+        home.swipe();
     }
+
     @Test
     public void lockAndUnlockPhone() {
         natives = new NativeDeviceActions(driver);
@@ -164,6 +166,7 @@ public class CartTests extends BaseTest {
         natives.unlockDevice();
 
     }
+
     @Test
     public void checkIfTheAppIsClosingDown() {
         home.hamburgerMenuClick();
@@ -171,7 +174,8 @@ public class CartTests extends BaseTest {
         natives = new NativeDeviceActions(driver);
         natives.closeApp();
     }
-}
+    }
+
 
 
 

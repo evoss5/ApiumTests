@@ -15,12 +15,14 @@ import java.time.Duration;
 
 public class BaseScreen {
     protected AndroidDriver driver;
+    protected NativeDeviceActions natives;
     protected WebDriverWait wait;
     private static final int TIMEOUT = 5;
 
     public BaseScreen(AndroidDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+        natives = new NativeDeviceActions(driver);
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 

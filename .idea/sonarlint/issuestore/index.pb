@@ -34,3 +34,7 @@ S
 testng.xml,5\2\522a7a4e21649af06297e31a9e33f13bb4fd3022
 \
 ,src/main/java/Pages/NativeDeviceActions.java,8\9\89a66a18df7915102a7423f87d00c284ddff3bff
+O
+src/test/java/WebViewTests.java,8\2\82581416394660506de58f6c7505a510235df9a9
+;
+credentials,d\5\d506bd5213c46bd49e16c634754ad70113408252
