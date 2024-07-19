@@ -1,4 +1,10 @@
 
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC8ŸÔ¦…Œ2
-o	java:S116"SRename this field "URLField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹Ï®¯8§Ô¦…Œ2
-]	java:S125&"<This block of commented-out lines of code should be removed.(ø¯Äïùÿÿÿÿ8ªÔ¦…Œ2
+
+java:S1488Ž"pImmediately return this expression instead of assigning it to the temporary variable "productsNumberInCartText".(ˆ¤…x8»ÂØÒŒ2
+}
+java:S1488´"_Immediately return this expression instead of assigning it to the temporary variable "message".(„°³ì8æ µÑŒ2
+
+java:S1488¸"\Immediately return this expression instead of assigning it to the temporary variable "text".(êÝÓÁýÿÿÿÿ8¦ã‡ÓŒ2
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC8¢›¥ÑŒ2
+o	java:S116"SRename this field "URLField" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹Ï®¯8¯›¥ÑŒ2
+]	java:S125>"<This block of commented-out lines of code should be removed.(ø¯Äïùÿÿÿÿ8³›¥ÑŒ2

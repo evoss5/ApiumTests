@@ -98,7 +98,7 @@ public class CartTests extends BaseTest {
     }
 
     @Test
-    public void CheckIfYouCanProceedWholeTransaction() {
+    public void checkIfYouCanProceedWholeTransaction() {
         home.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
@@ -140,7 +140,7 @@ public class CartTests extends BaseTest {
     }
 
     @Test
-    public void CheckIfYouCanSetRating() throws InterruptedException {
+    public void checkIfYouCanSetRating() throws InterruptedException {
         home.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
@@ -151,13 +151,13 @@ public class CartTests extends BaseTest {
         //todo asercja dodać
     }
 
-    @Test
-    public void swipeTest() throws InterruptedException {
-        home.hamburgerMenuClick();
-        home.apiCallsButtonClick();
-        Thread.sleep(3000);
-        home.swipe();
-    }
+//    @Test
+//    public void swipeTest() throws InterruptedException {
+//        home.hamburgerMenuClick();
+//        home.apiCallsButtonClick();
+//        Thread.sleep(3000);
+//        home.swipe();
+
 
     @Test
     public void lockAndUnlockPhone() {

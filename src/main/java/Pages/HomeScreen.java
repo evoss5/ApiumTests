@@ -2,12 +2,9 @@ package Pages;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomeScreen extends BaseScreen {
@@ -115,21 +112,6 @@ public class HomeScreen extends BaseScreen {
         return this;
     }
 
-    public HomeScreen clickSthButton() {
-        driver.pressKey(new KeyEvent(AndroidKey.HOME));
-        return this;
-    }
-
-    public HomeScreen touchActionsTest() {
-        Actions actions = new Actions(driver);
-        actions.moveToLocation(122, 160).perform();
-        return this;
-    }
-
-    public HomeScreen swipe() {
-        natives.swipeManyTimes(3);
-        return this;
-    }
 
     public HomeScreen apiCallsButtonClick() {
         clickElement(apiCallsButton);
@@ -144,6 +126,7 @@ public class HomeScreen extends BaseScreen {
         clickElement(webViewButton);
         return new WebViewHandle(driver);
     }
+
 
 
 

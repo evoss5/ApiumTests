@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class NativeDeviceActions  {
+public class NativeDeviceActions {
 
     public AndroidDriver driver;
     protected WebDriverWait wait;
@@ -82,12 +82,34 @@ public class NativeDeviceActions  {
 
         }
         return this;
-        //todo poprawić metodę swipe
     }
+
     public NativeDeviceActions closeApp() {
         HashMap<String, Object> bundle = new HashMap<>();
         bundle.put("appId", "com.saucelabs.mydemoapp.rn");
         driver.executeScript("mobile: terminateApp", bundle);
+        return this;
+    }
+
+    public NativeDeviceActions swipeManyTimes2(int numberOfTimes) {
+        Dimension size = driver.manage().window().getSize();
+        int startX = size.getWidth() / 2;
+        int startY = size.getHeight() / 2;
+        int endX = startX;
+        int endY = (int) (size.getHeight() * 0.90);
+
+        PointerInput point = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence swipe = new Sequence(point, 1)
+                .addAction(point.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
+                .addAction(point.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                .addAction(new Pause(point, Duration.ofMillis(200)))
+                .addAction(point.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), endX, endY))
+                .addAction(point.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        for (int i = 0; i <= numberOfTimes; i++) {
+            driver.perform(Collections.singletonList(swipe));
+
+        }
         return this;
     }
 }

@@ -34,6 +34,7 @@ public class BaseTest {
 
 
 
+
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
         navigate = new NativeDeviceActions(driver);
         home = new HomeScreen(driver);
