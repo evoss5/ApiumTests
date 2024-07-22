@@ -1,21 +1,22 @@
-import Pages.CartScreen;
-import Pages.NativeDeviceActions;
-import io.appium.java_client.android.AndroidDriver;
+import Pages.Native.CartScreen;
+import Pages.Native.NativeDeviceActions;
+import Pages.Native.components.TopNavigationBar;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CartTests extends BaseTest {
 
-    public AndroidDriver driver;
     public CartScreen cart;
     public Service service;
     public NativeDeviceActions natives;
+    public TopNavigationBar topNavigationBar;
 
 
     @Test
     public void removeItemsFromCart() {
         home.chooseProductToBuy("Sauce Labs Backpack");
-        home.scrollDownToText("Add To Cart");
+        natives = new NativeDeviceActions(driver);
+        natives.scrollDownToText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.removeItem();
@@ -25,14 +26,16 @@ public class CartTests extends BaseTest {
     @Test
     public void addProductToCart() {
         home.chooseProductToBuy("Sauce Labs Backpack");
-        home.scrollDownToText("Add To Cart");
+        natives = new NativeDeviceActions(driver);
+        natives.scrollDownToText("Add To Cart");
         home.addToCartClick();
     }
 
     @Test
     public void increaseNumberOfItemsBought() {
         home.chooseProductToBuy("Sauce Labs Backpack");
-        home.scrollDownToText("Add To Cart");
+        natives = new NativeDeviceActions(driver);
+        natives.scrollDownToText("Add To Cart");
         home.increaseNumberOfProductsBought();
         Assert.assertNotEquals(home.checkIfNumberOfProductsIsNotEvenOne(), 1);
         // TODO: 14.07.2024 Sprawdzić jeszcze raz asercję
@@ -40,13 +43,15 @@ public class CartTests extends BaseTest {
 
     @Test
     public void proceedToCheckout() {
-        home.hamburgerMenuClick();
+        topNavigationBar = new TopNavigationBar(driver);
+        topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy("Sauce Labs Backpack");
-        home.scrollDownToText("Add To Cart");
+        natives = new NativeDeviceActions(driver);
+        natives.scrollDownToText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
@@ -55,40 +60,44 @@ public class CartTests extends BaseTest {
 
     @Test
     public void checkIfYouCanProceedToPaymentIfSomeDataIsNotFilled() {
-        home.hamburgerMenuClick();
+        topNavigationBar = new TopNavigationBar(driver);
+        topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy("Sauce Labs Backpack");
-        home.scrollDownToText("Add To Cart");
+        natives = new NativeDeviceActions(driver);
+        natives.scrollDownToText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
-        home.scrollDownToText("Zip Code");
+        natives.scrollDownToText("Zip Code");
         cart.goToPaymentButtonClick();
         Assert.assertEquals(cart.IsProvideYourCountryMessageIsDisplayed(), "Please provide your country.", "Provide your country message does not popup");
     }
 
     @Test
     public void checkIfYouCanProceedToPaymentMethod() {
-        home.hamburgerMenuClick();
+        topNavigationBar = new TopNavigationBar(driver);
+        topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy("Sauce Labs Backpack");
-        home.scrollDownToText("Add To Cart");
+        natives = new NativeDeviceActions(driver);
+        natives.scrollDownToText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
-        home.scrollDownToText("Zip Code");
+        natives.scrollDownToText("Zip Code");
         cart.zipCodeFieldFill("62-100");
         service = new Service(driver);
         String ramndomCountry = service.getRandomValue(service.countries());
@@ -99,20 +108,22 @@ public class CartTests extends BaseTest {
 
     @Test
     public void checkIfYouCanProceedWholeTransaction() {
-        home.hamburgerMenuClick();
+        topNavigationBar = new TopNavigationBar(driver);
+        topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy("Sauce Labs Backpack");
-        home.scrollDownToText("Add To Cart");
+        natives = new NativeDeviceActions(driver);
+        natives.scrollDownToText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
-        home.scrollDownToText("Zip Code");
+        natives.scrollDownToText("Zip Code");
         cart.zipCodeFieldFill("62-100");
         service = new Service(driver);
         String ramndomCountry = service.getRandomValue(service.countries());
@@ -130,7 +141,8 @@ public class CartTests extends BaseTest {
 
     @Test
     public void checkIfColorOfTheProductsIsChanged() {
-        home.hamburgerMenuClick();
+        topNavigationBar = new TopNavigationBar(driver);
+        topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
@@ -141,35 +153,29 @@ public class CartTests extends BaseTest {
 
     @Test
     public void checkIfYouCanSetRating() throws InterruptedException {
-        home.hamburgerMenuClick();
+        topNavigationBar = new TopNavigationBar(driver);
+        topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy("Sauce Labs Backpack");
         home.setRating(2);
-        //todo asercja dodać
+        Assert.assertTrue(home.setRatingGetText(2), "The rating is not set");
+
     }
-
-//    @Test
-//    public void swipeTest() throws InterruptedException {
-//        home.hamburgerMenuClick();
-//        home.apiCallsButtonClick();
-//        Thread.sleep(3000);
-//        home.swipe();
-
 
     @Test
     public void lockAndUnlockPhone() {
         natives = new NativeDeviceActions(driver);
         natives.lockDevice();
         natives.unlockDevice();
-
     }
 
     @Test
     public void checkIfTheAppIsClosingDown() {
-        home.hamburgerMenuClick();
+        topNavigationBar = new TopNavigationBar(driver);
+        topNavigationBar.hamburgerMenuClick();
         home.apiCallsButtonClick();
         natives = new NativeDeviceActions(driver);
         natives.closeApp();

@@ -1,23 +1,24 @@
 package Pages;
 
+import Pages.Native.NativeDeviceActions;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.time.Duration;
+
 
 public class BaseScreen {
     protected AndroidDriver driver;
     protected NativeDeviceActions natives;
     protected WebDriverWait wait;
     private static final int TIMEOUT = 5;
+
 
     public BaseScreen(AndroidDriver driver) {
         this.driver = driver;
@@ -82,6 +83,8 @@ public class BaseScreen {
         Actions actions = new Actions(driver);
         actions.click(element);
     }
-
+    public void takeScreenshot() {
+        File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    }
     }
 

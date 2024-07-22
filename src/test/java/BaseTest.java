@@ -1,6 +1,6 @@
-import Pages.HomeScreen;
-import Pages.LoginScreen;
-import Pages.NativeDeviceActions;
+import Pages.Native.HomeScreen;
+import Pages.Native.LoginScreen;
+import Pages.Native.NativeDeviceActions;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
@@ -30,9 +30,8 @@ public class BaseTest {
         dc.setCapability("appium:automationName", "uiAutomator2");
         dc.setCapability("appium:app", "D://Appium//Apps//myDemoApp.apk");
         dc.setCapability("chromedriverExecutable", "C://driverForAppium/chromedriver.exe");
-
-
-
+        dc.setCapability("locationServiceEnabled", true);
+        dc.setCapability("locationServiceAuthorized", true);
 
 
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);

@@ -1,7 +1,11 @@
 
-b	java:S112)"FDefine and throw a dedicated exception instead of using a generic one.(ÊÈ®è8ºÃ³×‹2
-g	java:S112:"FDefine and throw a dedicated exception instead of using a generic one.(¶÷ë‘ıÿÿÿÿ8»Ã³×‹2
-g	java:S112K"FDefine and throw a dedicated exception instead of using a generic one.(¶÷ë‘ıÿÿÿÿ8»Ã³×‹2
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC8¼Ã³×‹2
+b	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(ÊÈ®è8Õ¤¥†2
+g	java:S112;"FDefine and throw a dedicated exception instead of using a generic one.(¶÷ë‘ıÿÿÿÿ8Õ¤¥†2
+g	java:S112L"FDefine and throw a dedicated exception instead of using a generic one.(¶÷ë‘ıÿÿÿÿ8Ö¤¥†2
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC8×¤¥†2
 N
-java:S1172>",Remove this unused method parameter "text2".(Ã¼‘‘ıÿÿÿÿ8×Ä³×‹2
+java:S1172?",Remove this unused method parameter "text2".(Ã¼‘‘ıÿÿÿÿ8×¥¥†2
+U
+java:S1854W"8Remove this useless assignment to local variable "file".(¨é÷è8Û¥¥†2
+F
+java:S1481W")Remove this unused "file" local variable.(¨é÷è8Û¥¥†2

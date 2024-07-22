@@ -1,5 +1,6 @@
-package Pages;
+package Pages.Native;
 
+import Pages.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
@@ -7,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartScreen extends BaseScreen {
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Remove Item\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=''Remove Item']\n")
     private WebElement removeItemButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"No Items\"]\n")
     private WebElement noItemsInCartMessage;
@@ -119,5 +120,4 @@ public class CartScreen extends BaseScreen {
         wait.until(ExpectedConditions.visibilityOf(checkoutCompleteMessage));
         return true;
     }
-
 }

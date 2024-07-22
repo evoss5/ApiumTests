@@ -1,5 +1,0 @@
-
-~
-java:S1488O"\Immediately return this expression instead of assigning it to the temporary variable "text".(¼ãÌšøÿÿÿÿ8Ë–²¼‹2
-u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC8Ë–²¼‹2
-o	java:S100N"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®›ªœýÿÿÿÿ8Ø–²¼‹2

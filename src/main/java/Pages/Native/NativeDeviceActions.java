@@ -1,8 +1,7 @@
-package Pages;
+package Pages.Native;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
@@ -23,21 +22,6 @@ public class NativeDeviceActions {
     public NativeDeviceActions(AndroidDriver driver) {
         this.driver = driver;
 
-    }
-
-    public NativeDeviceActions navigateBackButton() {
-        driver.pressKey(new KeyEvent(AndroidKey.BACK));
-        return this;
-    }
-
-    public NativeDeviceActions navigateHomeButton() {
-        driver.pressKey(new KeyEvent(AndroidKey.HOME));
-        return this;
-    }
-
-    public NativeDeviceActions switchToRecentAppsButton() {
-        driver.pressKey(new KeyEvent(AndroidKey.APP_SWITCH));
-        return this;
     }
 
     public NativeDeviceActions getScreenSize() {
@@ -110,6 +94,10 @@ public class NativeDeviceActions {
             driver.perform(Collections.singletonList(swipe));
 
         }
+        return this;
+    }
+    public NativeDeviceActions scrollDownToText(String text) {
+        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + text + "\").instance(0))"));
         return this;
     }
 }

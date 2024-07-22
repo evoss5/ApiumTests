@@ -1,5 +1,7 @@
-package Pages;
+package Pages.Native;
 
+import Pages.BaseScreen;
+import Pages.WebView.WebViewHandle;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -8,13 +10,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomeScreen extends BaseScreen {
-
+    public WebViewHandle webView;
 
 
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.ViewGroup\").instance(47)\n")
     private WebElement mainBanner;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"open menu\"]\n")
-    private WebElement humbergerMenu;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Log In\"]\n")
     private WebElement logInButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Add To Cart\"]\n")
@@ -35,16 +35,18 @@ public class HomeScreen extends BaseScreen {
     private WebElement apiCallsButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Webview\"]\n")
     private WebElement webViewButton;
+    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"URL input field\"]\n")
+    private WebElement urlField;
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Go To Site button']\n")
+    private WebElement goToSiteButton;
+    @AndroidFindBy(xpath = "(//android.widget.TextView[@text='About'])[1]\n")
+    private WebElement aboutButton;
 
 
     public HomeScreen(AndroidDriver driver) {
         super(driver);
     }
 
-    public HomeScreen hamburgerMenuClick() {
-        clickElement(humbergerMenu);
-        return this;
-    }
 
     public HomeScreen logInButtonClick() {
         clickElement(logInButton);
@@ -76,9 +78,8 @@ public class HomeScreen extends BaseScreen {
     }
 
     public String checkIfNumberOfProductsIsNotEvenOne() {
-        String text = driver.findElement(AppiumBy.xpath("\t\n" +
+        return driver.findElement(AppiumBy.xpath("\t\n" +
                 "//android.widget.TextView[@text=\"1\"]")).getAttribute("text");
-        return text;
     }
 
     public boolean isMainBannerVisible() {
@@ -107,11 +108,10 @@ public class HomeScreen extends BaseScreen {
     }
 
     public HomeScreen chooseProductsColor(String color) {
-        WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc=\"" + color + " circle\"]/android.view.ViewGroup\n"));
+        WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n"));
         clickElement(productColor);
         return this;
     }
-
 
     public HomeScreen apiCallsButtonClick() {
         clickElement(apiCallsButton);
@@ -122,14 +122,31 @@ public class HomeScreen extends BaseScreen {
         driver.findElement(By.xpath("(//android.widget.TextView[@text=\"\uDB81\uDCCF\"])[" + rate + "]")).click();
         return this;
     }
+    public boolean setRatingGetText(int rate) {
+        driver.findElement(By.xpath("(//android.widget.TextView[@text=\"\uDB81\uDCCF\"])[" + rate + "]")).isDisplayed();
+        return true;
+    }
+
     public WebViewHandle goToWebView() {
         clickElement(webViewButton);
         return new WebViewHandle(driver);
     }
 
+    public HomeScreen urlFieldFill() {
+        sendKeysToElement(urlField, "https://www.saucedemo.com");
+        return this;
+    }
 
-
-
+    public Pages.WebView.LoginScreen goToSiteButtonClick() {
+        clickElement(goToSiteButton);
+        webView = new WebViewHandle(driver);
+        webView.switchToWebView();
+        return new Pages.WebView.LoginScreen(driver);
+    }
+    public HomeScreen aboutButtonClick() {
+        clickElement(aboutButton);
+        return this;
+    }
 }
 
 

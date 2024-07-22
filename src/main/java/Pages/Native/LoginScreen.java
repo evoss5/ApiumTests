@@ -1,5 +1,6 @@
-package Pages;
+package Pages.Native;
 
+import Pages.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
