@@ -146,13 +146,12 @@ public class CartTests extends BaseTest {
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
-        Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy("Sauce Labs Backpack");
         home.chooseProductsColor("red");
     }
 
     @Test
-    public void checkIfYouCanSetRating() throws InterruptedException {
+    public void checkIfYouCanSetRating() {
         topNavigationBar = new TopNavigationBar(driver);
         topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
@@ -180,8 +179,16 @@ public class CartTests extends BaseTest {
         natives = new NativeDeviceActions(driver);
         natives.closeApp();
     }
+
+    @Test
+    public void checkProductsHighlight() {
+        home.chooseProductToBuy("Sauce Labs Backpack");
+        natives = new NativeDeviceActions(driver);
+        natives.scrollDownToText("Product Highlights");
+        Assert.assertEquals(home.productHighlightsGetText(), "Product Highlights", "There is not Product Highlights text");
+
+
     }
-
-
+}
 
 

@@ -13,13 +13,13 @@ public class LeftMenuBar extends BaseScreen {
     private WebElement sauceDemoRobotLogo;
     @AndroidFindBy(xpath = "(//android.widget.TextView[@text='Drawing'])[1]\n")
     private WebElement drawingBar;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Clear\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Clear']\n")
     private WebElement clearButton;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='menu item reset app']\n")
     private WebElement resetAppStateButton;
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"android:id/button1\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1']\n")
     public WebElement resetAppStateWindowConfirmation;
-    @AndroidFindBy (xpath = "//android.widget.TextView[@resource-id=\"android:id/alertTitle\"]\n")
+    @AndroidFindBy (xpath = "//android.widget.TextView[@resource-id='android:id/alertTitle']\n")
     private WebElement resetAppDoneConfirmation;
     public LeftMenuBar(AndroidDriver driver) {
         super(driver);

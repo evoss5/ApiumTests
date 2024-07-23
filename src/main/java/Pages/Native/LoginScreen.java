@@ -9,18 +9,18 @@ import org.openqa.selenium.WebElement;
 
 public class LoginScreen extends BaseScreen {
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"Username input field\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='Username input field']\n")
     private WebElement usernameField;
 
-    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"Password input field\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='Password input field']\n")
     private WebElement passwordField;
 
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Login button\"]\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Login button']\n")
     private WebElement loginButton;
 
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"Password-error-message\"]\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Password-error-message']\n")
     private WebElement passwordErrorMessage;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"bob@example.com\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='bob@example.com']\n")
     private WebElement anExistingUserLoginData;
     public LoginScreen(AndroidDriver driver) {
         super(driver);

@@ -12,8 +12,6 @@ L
 w
 G.idea/sonarlint/issuestore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,b\7\b7995c3d41886bad0e7a5d302fbde52ede45cf17
 Å
-Q.idea/sonarlint/securityhotspotstore/6/f/6f58a72ab3a5a9b3e82db0a20428428d8fe4770a,c\8\c813bfb35069324bb1b7ad7c4ca57b18f7bf9fc8
-Å
 Q.idea/sonarlint/securityhotspotstore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,d\6\d68997b117a4738704486870a3f981c28fe1f198
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
@@ -51,9 +49,11 @@ c
 +src/main/java/Pages/Native/LoginScreen.java,3\1\31886970f5d65e58b879d34e9b80aab6af0c31ff
 L
 src/test/java/MenuTests.java,6\0\604efcb72604790e70f86d8057494fcf6ee039d5
-[
-+src/main/java/Pages/Native/LeftMenuBar.java,a\1\a159b60cd53780030d96fbb3890e37da7a2409de
 f
 6src/main/java/Pages/Native/components/LeftMenuBar.java,5\4\5454d7d54ebe259b4363a8c8134654aa65733cef
 Z
 *src/main/java/Pages/Native/CartScreen.java,8\9\8973df0c87ae8a1c0e5f51aa806b86d1098be457
+N
+src/test/java/CatakigPage.java,1\e\1e7841b934fc3aac74bc09dce0e0df5219fac8a1
+N
+src/test/java/CatalogPage.java,2\e\2e7f2ac98fe58e602b8c7b94db4f56cf807fdd32

@@ -15,13 +15,12 @@ public class TopNavigationBar{
 
 
 
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"cart badge\"]/android.widget.ImageView\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='cart badge']/android.widget.ImageView\n")
     private WebElement cartButton;
-
     @AndroidFindBy(xpath = "//div[@class='login_logo']")
     private WebElement mainHeader;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"open menu\"]\n")
-    private WebElement humbergerMenu;
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='open menu']\n")
+    private WebElement hamburgerMenu;
 
     public AndroidDriver driver;
     protected WebDriverWait wait;
@@ -40,7 +39,7 @@ public class TopNavigationBar{
     public TopNavigationBar hamburgerMenuClick() {
         webView = new WebViewHandle(driver);
         webView.switchBackToNative();
-        humbergerMenu.click();
+        hamburgerMenu.click();
         return this;
     }
     }

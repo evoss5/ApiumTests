@@ -13,34 +13,37 @@ public class HomeScreen extends BaseScreen {
     public WebViewHandle webView;
 
 
-    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.ViewGroup\").instance(47)\n")
+    @AndroidFindBy(uiAutomator = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]\n")
     private WebElement mainBanner;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Log In\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Log In']\n")
     private WebElement logInButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Add To Cart\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Add To Cart']\n")
     private WebElement addToCartButton;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"counter plus button\"]/android.widget.ImageView\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='counter plus button']/android.widget.ImageView\n")
     private WebElement counterPlusButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"1\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='1']\n")
     private WebElement numberOfProducts;
-    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Log Out\")\n")
+    @AndroidFindBy(uiAutomator = "new UiSelector().text(\"Log Out\")\n")        //
     private WebElement logOutButton;
     @AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"android:id/button1\")\n")
     private WebElement logOutAcceptButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/alertTitle\"]\n")
-    private WebElement successfulyLoggedOutMessage;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"cart badge\"]/android.widget.ImageView\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='android:id/alertTitle']\n")
+    private WebElement successfullyLoggedOutMessage;
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='cart badge']/android.widget.ImageView\n")
     private WebElement cartButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Api Calls\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Api Calls']\n")
     private WebElement apiCallsButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Webview\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Webview']\n")
     private WebElement webViewButton;
-    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"URL input field\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='URL input field']\n")
     private WebElement urlField;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Go To Site button']\n")
     private WebElement goToSiteButton;
     @AndroidFindBy(xpath = "(//android.widget.TextView[@text='About'])[1]\n")
     private WebElement aboutButton;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Product Highlights']\n")
+    private WebElement productHighlightsText;
+
 
 
     public HomeScreen(AndroidDriver driver) {
@@ -98,7 +101,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public boolean isSuccessfulyLoggedOutMessageVisible() {
-        wait.until(ExpectedConditions.visibilityOf(successfulyLoggedOutMessage));
+        wait.until(ExpectedConditions.visibilityOf(successfullyLoggedOutMessage));
         return true;
     }
 
@@ -108,8 +111,10 @@ public class HomeScreen extends BaseScreen {
     }
 
     public HomeScreen chooseProductsColor(String color) {
-        WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n"));
-        clickElement(productColor);
+//        WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n"));
+        driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n")).click();
+
+//        clickElement(productColor);
         return this;
     }
 
@@ -146,6 +151,9 @@ public class HomeScreen extends BaseScreen {
     public HomeScreen aboutButtonClick() {
         clickElement(aboutButton);
         return this;
+    }
+    public String productHighlightsGetText() {
+        return productHighlightsText.getText();
     }
 }
 
