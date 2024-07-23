@@ -13,14 +13,16 @@ Before you begin, ensure you have the following software installed:
 Ensure you have the correct version of Java installed. You can verify your Java installation with:
 java -version
 
-#### Appium
+###  Appium
 Ensure you have the correct version of Appium installed. You can verify your Appium installation with:
 appium -v
 
-##### Node.js
+###  Node.js
 Ensure you have the correct version of Node.js installed. You can verify your Node.js installation with:
 node -v
 
-###### npm
+###  npm
 Ensure you have the correct version of npm installed. You can verify your npm installation with:
 npm -v
+
+
