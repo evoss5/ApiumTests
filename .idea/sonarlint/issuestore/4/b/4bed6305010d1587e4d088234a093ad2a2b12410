@@ -1,0 +1,12 @@
+
+u
+java:S1104"SMake webView a static final constant or non-public and provide accessors if needed.(½Ó–Äüÿÿÿÿ8ª™½ Ž2
+~
+java:S1104"\Make topNavigationBar a static final constant or non-public and provide accessors if needed.(˜àÎéýÿÿÿÿ8ª™½ Ž2
+|
+java:S1104"_Make footerNavigationBar a static final constant or non-public and provide accessors if needed.(œ£¢ 8¶ÅÖ¢Ž2
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(×ÞÌ¡ýÿÿÿÿ8«™½ Ž2
+Y
+java:S3252["<Use static access with "org.openqa.selenium.By" for "xpath".(·ò•…8½™½ Ž2
+X	java:S125y"<This block of commented-out lines of code should be removed.(Í’¹»8¿™½ Ž2
+]	java:S125|"<This block of commented-out lines of code should be removed.(ÑÉÃäüÿÿÿÿ8¿™½ Ž2

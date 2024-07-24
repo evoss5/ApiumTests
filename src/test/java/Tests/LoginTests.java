@@ -26,7 +26,7 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void successfulLogIn() {
-//        topNavigationBar = new TopNavigationBar(driver);
+        topNavigationBar = new TopNavigationBar(driver);
         topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();

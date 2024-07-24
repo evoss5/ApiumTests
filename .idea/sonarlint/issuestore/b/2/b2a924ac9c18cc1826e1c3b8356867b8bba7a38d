@@ -1,0 +1,14 @@
+
+t
+java:S1104"RMake driver a static final constant or non-public and provide accessors if needed.(Ì±½îûÿÿÿÿ8ªò™ÓŒ2
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(×ŞÌ¡ıÿÿÿÿ8«ò™ÓŒ2
+G	java:S106"+Replace this use of System.out by a logger.(–İÅ8Àò™ÓŒ2
+L	java:S106#"+Replace this use of System.out by a logger.(ÆÖ­¥üÿÿÿÿ8Áò™ÓŒ2
+O
+java:S1135i"2Complete the task associated to this TODO comment.(˜ÍŠÔ8ì÷ó2
+N
+java:S1135j"2Complete the task associated to this TODO comment.(çÉ²#8©Ù‘ó2
+T
+java:S1135k"2Complete the task associated to this TODO comment.(ƒ¾ûÀÿÿÿÿÿ8«Ã•ó2
+M
+java:S1068"+Remove this unused "TIMEOUT" private field.(ÍÔÿÿÿÿÿÿ8Êò™ÓŒ2
