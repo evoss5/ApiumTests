@@ -1,3 +1,5 @@
+package Tests;
+
 import Pages.Native.components.TopNavigationBar;
 import Pages.WebView.WebViewHandle;
 import org.testng.Assert;
@@ -13,7 +15,7 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void unsuccessfulLogIn() {
-        topNavigationBar = new TopNavigationBar(driver);
+//        topNavigationBar = new TopNavigationBar(driver);
         topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.usernameFieldFill("maciek123@wp.pl");
@@ -24,7 +26,7 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void successfulLogIn() {
-        topNavigationBar = new TopNavigationBar(driver);
+//        topNavigationBar = new TopNavigationBar(driver);
         topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();

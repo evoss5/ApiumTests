@@ -5,7 +5,7 @@
 
     <test name="Registration Tests">
         <classes>
-            <class name="CartTests">
+            <class name="Tests.BaseTest">
                 <methods>
                     <include name="checkIfYouCanGiveOpinion"/>
                 </methods>

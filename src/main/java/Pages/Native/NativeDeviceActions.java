@@ -96,7 +96,7 @@ public class NativeDeviceActions {
         }
         return this;
     }
-    public NativeDeviceActions scrollDownToText(String text) {
+    public NativeDeviceActions scrollToElementByText(String text) {
         driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + text + "\").instance(0))"));
         return this;
     }

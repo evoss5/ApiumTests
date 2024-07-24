@@ -1,10 +1,12 @@
+package Tests;
+
 import Pages.Native.components.LeftMenuBar;
 import Pages.Native.components.TopNavigationBar;
 import Pages.WebView.WebViewHandle;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class MenuTests extends BaseTest{
+public class MenuTests extends BaseTest {
     public Service service;
     public WebViewHandle webView;
     public TopNavigationBar topNavigationBar;

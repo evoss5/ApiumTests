@@ -1,9 +1,11 @@
+package Tests;
+
 import Pages.Native.HomeScreen;
 import Pages.Native.LoginScreen;
 import Pages.Native.NativeDeviceActions;
+import Pages.Native.components.TopNavigationBar;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
 
@@ -12,13 +14,11 @@ import java.net.URL;
 
 public class BaseTest {
     public AndroidDriver driver;
-
-    @AndroidFindBy(accessibility = "longpress reset app\n")
-//    @AndroidFindBy(uiAutomator = )
-    private WebElement mainHeader;
+    protected WebDriver webDriver;
     protected HomeScreen home;
     protected LoginScreen login;
     protected NativeDeviceActions navigate;
+    protected TopNavigationBar topNavigationBar;
 
     @BeforeMethod(alwaysRun = true)
     public void setup() throws MalformedURLException {
@@ -35,10 +35,20 @@ public class BaseTest {
 
 
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
-        navigate = new NativeDeviceActions(driver);
+//        navigate = new NativeDeviceActions(driver);
         home = new HomeScreen(driver);
 
+
+
+
     }
+
+    public void catalog() {
+        HomeScreen homeScreen = new HomeScreen(driver);
+    }
+
+
+
 //    @AfterTest
 //    public void close() {
 //        driver.quit();

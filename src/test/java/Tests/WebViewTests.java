@@ -1,3 +1,5 @@
+package Tests;
+
 import Pages.Native.NativeDeviceActions;
 import Pages.Native.components.TopNavigationBar;
 import Pages.WebView.CartScreen;
@@ -126,7 +128,7 @@ public class WebViewTests extends BaseTest {
 
     @Test
     public void logOutFromAccount() {
-        topNavigationBar = new TopNavigationBar(driver);
+//        topNavigationBar = new TopNavigationBar(driver);
         topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
@@ -142,10 +144,9 @@ public class WebViewTests extends BaseTest {
         Assert.assertTrue(home.isSuccessfulyLoggedOutMessageVisible(), "The message is not visible");
     }
     @Test
-    public void Testingthat() {
+    public void switchContextToWebView() {
         topNavigationBar = new TopNavigationBar(driver);
         topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
-
     }
 }

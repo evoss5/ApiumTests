@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartScreen extends BaseScreen {
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=''Remove Item']\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Remove Item']\n")
     private WebElement removeItemButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='No Items']\n")
     private WebElement noItemsInCartMessage;
@@ -122,3 +122,5 @@ public class CartScreen extends BaseScreen {
     }
 
 }
+// TODO: 24.07.2024   24.07.2024 zmienić metodę remove 
+// TODO: 24.07.2024  24.07.2024 inicjalizacja screenów w basescreen i użycie w beforemethods 

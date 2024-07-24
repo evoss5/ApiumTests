@@ -1,17 +1,15 @@
 package Pages.Native.components;
 
+import Pages.BaseScreen;
 import Pages.WebView.WebViewHandle;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class TopNavigationBar{
+public class TopNavigationBar extends BaseScreen {
 
 
 
@@ -21,16 +19,16 @@ public class TopNavigationBar{
     private WebElement mainHeader;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='open menu']\n")
     private WebElement hamburgerMenu;
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"sort button\"]/android.widget.ImageView\n")
+    private WebElement sortButton;
 
-    public AndroidDriver driver;
     protected WebDriverWait wait;
     private WebViewHandle webView;
     private static final int TIMEOUT = 5;
 
     public TopNavigationBar(AndroidDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+        super(driver);
+
     }
     public boolean isCartButtonVisible() {
         wait.until(ExpectedConditions.visibilityOf(cartButton));
@@ -40,6 +38,16 @@ public class TopNavigationBar{
         webView = new WebViewHandle(driver);
         webView.switchBackToNative();
         hamburgerMenu.click();
+        return this;
+    }
+    private TopNavigationBar sortButtonClick() {
+        clickElement(sortButton);
+        return this;
+    }
+    public TopNavigationBar sortButtonClick(String ascendingOrDescending) {
+        sortButtonClick();
+        WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@text='Name - " + ascendingOrDescending + "']\n"));
+        wait.until(ExpectedConditions.visibilityOf(element)).click();
         return this;
     }
     }

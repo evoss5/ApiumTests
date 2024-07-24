@@ -1,14 +1,6 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-J
-src/test/java/Service.java,1\e\1efb82bbda1e6bbcdb30115afd58d59a62e1ebec
-M
-src/test/java/LoginTests.java,2\f\2f659c7da3aeef99c9d63ed015618041575b55c6
-K
-src/test/java/BaseTest.java,4\3\43e9f450cc1d05e1c35b5c2fa4533e9611ac1276
-L
-src/test/java/CartTests.java,3\b\3b12afeb93545c3b2bb740ea648ebf1d184b60cf
 w
 G.idea/sonarlint/issuestore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,b\7\b7995c3d41886bad0e7a5d302fbde52ede45cf17
 
@@ -22,8 +14,6 @@ S
 :
 
 testng.xml,5\2\522a7a4e21649af06297e31a9e33f13bb4fd3022
-O
-src/test/java/WebViewTests.java,8\2\82581416394660506de58f6c7505a510235df9a9
 ;
 credentials,d\5\d506bd5213c46bd49e16c634754ad70113408252
 :
@@ -47,13 +37,25 @@ c
 .src/main/java/Pages/WebView/WebViewHandle.java,4\0\40cf5ccd98fc2da0da2f1175aa27fab9e11f2631
 [
 +src/main/java/Pages/Native/LoginScreen.java,3\1\31886970f5d65e58b879d34e9b80aab6af0c31ff
-L
-src/test/java/MenuTests.java,6\0\604efcb72604790e70f86d8057494fcf6ee039d5
 f
 6src/main/java/Pages/Native/components/LeftMenuBar.java,5\4\5454d7d54ebe259b4363a8c8134654aa65733cef
 Z
 *src/main/java/Pages/Native/CartScreen.java,8\9\8973df0c87ae8a1c0e5f51aa806b86d1098be457
-N
-src/test/java/CatakigPage.java,1\e\1e7841b934fc3aac74bc09dce0e0df5219fac8a1
-N
-src/test/java/CatalogPage.java,2\e\2e7f2ac98fe58e602b8c7b94db4f56cf807fdd32
+O
+src/test/java/package-info.java,c\1\c184bd1dce05d5e686a4d0315d72a17af829c211
+U
+%src/test/java/Tests/CatalogTests.java,7\c\7cac5695160fdb93ea57ad2ab777b526b584dabb
+S
+#src/test/java/Tests/LoginTests.java,9\7\97e59fa301d667e7e74dfb7a3827d053f88bc327
+R
+"src/test/java/Tests/MenuTests.java,e\e\ee88e09a77bb9f9b3e3c1f1cc65a48635e7909e7
+P
+ src/test/java/Tests/Service.java,9\c\9ca2fd248982ffde2c891b60fe5458cdbe81a927
+U
+%src/test/java/Tests/WebViewTests.java,b\2\b246fc68e79cb0853b4ea1d902e31448a0afb326
+Q
+!src/test/java/Tests/BaseTest.java,7\0\709317414c9458dc67e08cf2d4aa43e5ee16f00e
+R
+"src/test/java/Tests/CartTests.java,f\f\ff9b7bf50240694e7947b494ac2023d2c0a8f6f7
+f
+6src/main/java/Pages/Native/components/ProductList.java,7\3\73bd5b18669373548f1eb2cac75a8060ff1c1039

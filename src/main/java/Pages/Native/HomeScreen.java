@@ -1,6 +1,8 @@
 package Pages.Native;
 
 import Pages.BaseScreen;
+import Pages.Native.components.FooterNavigationBar;
+import Pages.Native.components.TopNavigationBar;
 import Pages.WebView.WebViewHandle;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -12,8 +14,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class HomeScreen extends BaseScreen {
     public WebViewHandle webView;
 
+    public TopNavigationBar topNavigationBar;
+    public FooterNavigationBar footerNavigationBar;
 
-    @AndroidFindBy(uiAutomator = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]\n")
+
+    @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.ViewGroup\").instance(47)\n")
     private WebElement mainBanner;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Log In']\n")
     private WebElement logInButton;
@@ -48,6 +53,8 @@ public class HomeScreen extends BaseScreen {
 
     public HomeScreen(AndroidDriver driver) {
         super(driver);
+        this.topNavigationBar = new TopNavigationBar(driver);
+        this.footerNavigationBar = new FooterNavigationBar(driver);
     }
 
 

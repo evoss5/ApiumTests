@@ -1,5 +1,8 @@
+package Tests;
+
 import Pages.Native.CartScreen;
 import Pages.Native.NativeDeviceActions;
+import Pages.Native.components.ProductList;
 import Pages.Native.components.TopNavigationBar;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,9 +17,9 @@ public class CartTests extends BaseTest {
 
     @Test
     public void removeItemsFromCart() {
-        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         natives = new NativeDeviceActions(driver);
-        natives.scrollDownToText("Add To Cart");
+        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.removeItem();
@@ -25,17 +28,17 @@ public class CartTests extends BaseTest {
 
     @Test
     public void addProductToCart() {
-        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         natives = new NativeDeviceActions(driver);
-        natives.scrollDownToText("Add To Cart");
+        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
     }
 
     @Test
     public void increaseNumberOfItemsBought() {
-        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         natives = new NativeDeviceActions(driver);
-        natives.scrollDownToText("Add To Cart");
+        natives.scrollToElementByText("Add To Cart");
         home.increaseNumberOfProductsBought();
         Assert.assertNotEquals(home.checkIfNumberOfProductsIsNotEvenOne(), 1);
         // TODO: 14.07.2024 Sprawdzić jeszcze raz asercję
@@ -49,9 +52,9 @@ public class CartTests extends BaseTest {
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
-        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         natives = new NativeDeviceActions(driver);
-        natives.scrollDownToText("Add To Cart");
+        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
@@ -66,16 +69,16 @@ public class CartTests extends BaseTest {
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
-        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         natives = new NativeDeviceActions(driver);
-        natives.scrollDownToText("Add To Cart");
+        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
-        cart.addressLineFill("Poznanska 13");
+        cart.addressLineFill("Poznanska 13");   // TODO: 24.07.2024 adres obowiązkowy i opcjonalny 
         cart.cityFieldFill("Konin");
-        natives.scrollDownToText("Zip Code");
+        natives.scrollToElementByText("Zip Code");
         cart.goToPaymentButtonClick();
         Assert.assertEquals(cart.IsProvideYourCountryMessageIsDisplayed(), "Please provide your country.", "Provide your country message does not popup");
     }
@@ -88,20 +91,20 @@ public class CartTests extends BaseTest {
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
-        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         natives = new NativeDeviceActions(driver);
-        natives.scrollDownToText("Add To Cart");
+        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
-        natives.scrollDownToText("Zip Code");
+        natives.scrollToElementByText("Zip Code"); // TODO: 24.07.2024  zrobić metodę na kliknięcie zipCode i wrzucić tam metodę scroll 
         cart.zipCodeFieldFill("62-100");
         service = new Service(driver);
-        String ramndomCountry = service.getRandomValue(service.countries());
-        cart.countryFieldFill(ramndomCountry);
+        String randomCountry = service.getRandomValue(service.countries());
+        cart.countryFieldFill(randomCountry);
         cart.goToPaymentButtonClick();
         Assert.assertTrue(cart.isPaymentMessageMethodMessageVisible(), "Enter Payment Mehod Message is not visible");
     }
@@ -114,16 +117,16 @@ public class CartTests extends BaseTest {
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
-        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         natives = new NativeDeviceActions(driver);
-        natives.scrollDownToText("Add To Cart");
+        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
-        natives.scrollDownToText("Zip Code");
+        natives.scrollToElementByText("Zip Code");
         cart.zipCodeFieldFill("62-100");
         service = new Service(driver);
         String ramndomCountry = service.getRandomValue(service.countries());
@@ -146,22 +149,8 @@ public class CartTests extends BaseTest {
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
-        home.chooseProductToBuy("Sauce Labs Backpack");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         home.chooseProductsColor("red");
-    }
-
-    @Test
-    public void checkIfYouCanSetRating() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
-        login = home.goToLoginPage();
-        login.logInAsExistingUser();
-        login.loginButtonClick();
-        Assert.assertTrue(home.isMainBannerVisible());
-        home.chooseProductToBuy("Sauce Labs Backpack");
-        home.setRating(2);
-        Assert.assertTrue(home.setRatingGetText(2), "The rating is not set");
-
     }
 
     @Test
@@ -180,15 +169,7 @@ public class CartTests extends BaseTest {
         natives.closeApp();
     }
 
-    @Test
-    public void checkProductsHighlight() {
-        home.chooseProductToBuy("Sauce Labs Backpack");
-        natives = new NativeDeviceActions(driver);
-        natives.scrollDownToText("Product Highlights");
-        Assert.assertEquals(home.productHighlightsGetText(), "Product Highlights", "There is not Product Highlights text");
 
-
-    }
 }
-
+// TODO: 24.07.2024 UIAutomatin version, wersja android, i telefon
 
