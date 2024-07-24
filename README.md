@@ -1,8 +1,28 @@
-#### Appium Tests Project
+# Appium Tests Project
 
-#### Apps used:
-java version "21.0.1"
-Appium v 2.11.2
-node.js   v20.15.1
-npm 10.8.2
+## Prerequisites
+
+Before you begin, ensure you have the following software installed:
+
+- **Java**: version "21.0.1"
+- **Appium**: version 2.11.2
+- **Node.js**: version 20.15.1
+- **npm**: version 10.8.2
+
+### Java
+Ensure you have the correct version of Java installed. You can verify your Java installation with:  
+  	java -version
+
+###  Appium
+Ensure you have the correct version of Appium installed. You can verify your Appium installation with:  
+  	appium -v
+
+###  Node.js
+Ensure you have the correct version of Node.js installed. You can verify your Node.js installation with:  
+  	node -v
+
+###  npm
+Ensure you have the correct version of npm installed. You can verify your npm installation with:  
+  	npm -v
+
 
