@@ -21,6 +21,11 @@ public class LeftMenuBar extends BaseScreen {
     public WebElement resetAppStateWindowConfirmation;
     @AndroidFindBy (xpath = "//android.widget.TextView[@resource-id='android:id/alertTitle']\n")
     private WebElement resetAppDoneConfirmation;
+    @AndroidFindBy (xpath = "//android.widget.TextView[@text=\"Sauce Bot Video\"]\n")
+    private WebElement sauceBotVideoButton;
+    @AndroidFindBy (xpath = "//android.view.ViewGroup[@content-desc=\"video icon backward\"]\n")
+    private WebElement videoBackwardButton;
+
     public LeftMenuBar(AndroidDriver driver) {
         super(driver);
     }
@@ -50,5 +55,9 @@ public class LeftMenuBar extends BaseScreen {
     }
     public String resetAppGetText() {
          return resetAppDoneConfirmation.getText();
+    }
+    public LeftMenuBar sauceBoVideoButtonClick() {
+        clickElement(sauceBotVideoButton);
+        return this;
     }
 }

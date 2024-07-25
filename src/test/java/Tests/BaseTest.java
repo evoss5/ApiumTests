@@ -38,9 +38,6 @@ public class BaseTest {
 //        navigate = new NativeDeviceActions(driver);
         home = new HomeScreen(driver);
 
-
-
-
     }
 
     public void catalog() {
