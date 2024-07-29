@@ -35,16 +35,10 @@ public class BaseTest {
 
 
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
-//        navigate = new NativeDeviceActions(driver);
+        navigate = new NativeDeviceActions(driver);
         home = new HomeScreen(driver);
 
     }
-
-    public void catalog() {
-        HomeScreen homeScreen = new HomeScreen(driver);
-    }
-
-
 
 //    @AfterTest
 //    public void close() {

@@ -21,6 +21,8 @@ public WebDriver WebDriver;
     private WebElement fullScreenButton;
     @AndroidFindBy (xpath = "//button[@aria-label=\"Show cards\"]")
     private WebElement dotButton;
+    @AndroidFindBy (xpath = "//android.view.ViewGroup[@content-desc=\"video icon stop\"]\n")
+    private WebElement videoStopButton;
     public SauceVideo(AndroidDriver driver) {
         super(driver);
     }
@@ -49,6 +51,11 @@ public WebDriver WebDriver;
         WebDriver.switchTo().frame(element);
         clickElement(dotButton);
         return this;    }
+
+    public SauceVideo videoStopButtonClick() {
+        clickElement(videoStopButton);
+        return this;
+    }
 
 
 }

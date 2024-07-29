@@ -17,14 +17,17 @@ public class LeftMenuBar extends BaseScreen {
     private WebElement clearButton;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='menu item reset app']\n")
     private WebElement resetAppStateButton;
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1']\n")
-    public WebElement resetAppStateWindowConfirmation;
-    @AndroidFindBy (xpath = "//android.widget.TextView[@resource-id='android:id/alertTitle']\n")
-    private WebElement resetAppDoneConfirmation;
+
     @AndroidFindBy (xpath = "//android.widget.TextView[@text=\"Sauce Bot Video\"]\n")
     private WebElement sauceBotVideoButton;
     @AndroidFindBy (xpath = "//android.view.ViewGroup[@content-desc=\"video icon backward\"]\n")
     private WebElement videoBackwardButton;
+    @AndroidFindBy (xpath = "//android.widget.TextView[@text=\"Api Calls\"]\n")
+    private WebElement apiCallsButton;
+    @AndroidFindBy (xpath = "//android.widget.TextView[@text=\"API calls\"]\n")
+    private WebElement apiCallsIcon;
+    @AndroidFindBy(accessibility = "menu item log in")
+    private WebElement logInButton;
 
     public LeftMenuBar(AndroidDriver driver) {
         super(driver);
@@ -33,6 +36,12 @@ public class LeftMenuBar extends BaseScreen {
         clickElement(aboutButton);
         return this;
     }
+
+    public LeftMenuBar loginButtonClick() {
+        clickElement(logInButton);
+        return this;
+    }
+
     public boolean isSauceDemoRobotLogoIsVisible() {
         wait.until(ExpectedConditions.visibilityOf(sauceDemoRobotLogo));
         return true;
@@ -45,19 +54,24 @@ public class LeftMenuBar extends BaseScreen {
         wait.until(ExpectedConditions.visibilityOf(clearButton));
         return true;
     }
-    public LeftMenuBar resetAppStateButtonClick() {
-        clickElement(resetAppStateButton);
-        return this;
-    }
-    public LeftMenuBar resetAppStateWindowConfirmationClick() {
-        clickElement(resetAppStateWindowConfirmation);
-        return this;
-    }
-    public String resetAppGetText() {
-         return resetAppDoneConfirmation.getText();
-    }
+
+
     public LeftMenuBar sauceBoVideoButtonClick() {
         clickElement(sauceBotVideoButton);
         return this;
     }
+    public LeftMenuBar apiCallsButtonClick() {
+        clickElement(apiCallsButton);
+        return this;
+    }
+    public boolean isApiCallsLogoVisible() {
+        wait.until(ExpectedConditions.visibilityOf(apiCallsIcon));
+        return true;
+    }
+    public ResetAppStatePopup resetAppStateButtonClick() {
+        clickElement(resetAppStateButton);
+        return new ResetAppStatePopup(driver);
+
+    }
+
 }

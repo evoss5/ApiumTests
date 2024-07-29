@@ -1,8 +1,7 @@
 package Pages.Native;
 
 import Pages.BaseScreen;
-import Pages.Native.components.FooterNavigationBar;
-import Pages.Native.components.TopNavigationBar;
+import Pages.Native.components.*;
 import Pages.WebView.WebViewHandle;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -16,6 +15,8 @@ public class HomeScreen extends BaseScreen {
 
     public TopNavigationBar topNavigationBar;
     public FooterNavigationBar footerNavigationBar;
+    public LeftMenuBar leftMenuBar;
+    public NativeDeviceActions natives;
 
 
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.ViewGroup\").instance(47)\n")
@@ -50,17 +51,25 @@ public class HomeScreen extends BaseScreen {
     private WebElement productHighlightsText;
 
 
-
     public HomeScreen(AndroidDriver driver) {
         super(driver);
         this.topNavigationBar = new TopNavigationBar(driver);
+        this.leftMenuBar = new LeftMenuBar(driver);
         this.footerNavigationBar = new FooterNavigationBar(driver);
+        this.natives = new NativeDeviceActions(driver);
+
     }
 
 
     public HomeScreen logInButtonClick() {
         clickElement(logInButton);
         return this;
+    }
+
+    public LoginScreen goToLoginScreen() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.loginButtonClick();
+        return new LoginScreen(driver);
     }
 
     public LoginScreen goToLoginPage() {
@@ -70,11 +79,13 @@ public class HomeScreen extends BaseScreen {
 
     public HomeScreen chooseProductToBuy(String productName) {
         WebElement product = driver.findElement(By.xpath("//android.widget.TextView[@content-desc=\"store item text\" and @text='" + productName + "']"));
+        wait.until(ExpectedConditions.visibilityOf(product));
         clickElement(product);
         return this;
     }
 
     public HomeScreen addToCartClick() {
+        natives.scrollToElementByText("Add To Cart");
         clickElement(addToCartButton);
         return this;
     }
@@ -98,6 +109,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public HomeScreen logOutFromAccount() {
+        topNavigationBar.hamburgerMenuClick();
         clickElement(logOutButton);
         return this;
     }
@@ -134,14 +146,16 @@ public class HomeScreen extends BaseScreen {
         driver.findElement(By.xpath("(//android.widget.TextView[@text=\"\uDB81\uDCCF\"])[" + rate + "]")).click();
         return this;
     }
+
     public boolean setRatingGetText(int rate) {
         driver.findElement(By.xpath("(//android.widget.TextView[@text=\"\uDB81\uDCCF\"])[" + rate + "]")).isDisplayed();
         return true;
     }
 
-    public WebViewHandle goToWebView() {
+    public Pages.WebView.HomeScreen goToWebView() {
+        topNavigationBar.hamburgerMenuClick();
         clickElement(webViewButton);
-        return new WebViewHandle(driver);
+        return new Pages.WebView.HomeScreen(driver);
     }
 
     public HomeScreen urlFieldFill() {
@@ -155,12 +169,40 @@ public class HomeScreen extends BaseScreen {
         webView.switchToWebView();
         return new Pages.WebView.LoginScreen(driver);
     }
+
     public HomeScreen aboutButtonClick() {
         clickElement(aboutButton);
         return this;
     }
+
     public String productHighlightsGetText() {
         return productHighlightsText.getText();
+    }
+
+    public ResetAppStatePopup goToResetAppState() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.resetAppStateButtonClick();
+        return new ResetAppStatePopup(driver);
+    }
+    public SauceVideo goToSauceVideo() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.sauceBoVideoButtonClick();
+        return new SauceVideo(driver);
+    }
+    public LeftMenuBar goToAboutInfo() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.aboutButtonClick();
+        return new LeftMenuBar(driver);
+    }
+    public LeftMenuBar goToDrawingMenu() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.drawingButtonClick();
+        return new LeftMenuBar(driver);
+    }
+    public LeftMenuBar goToApiCalls() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.apiCallsButtonClick();
+        return new LeftMenuBar(driver);
     }
 }
 

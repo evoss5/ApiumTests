@@ -10,6 +10,8 @@ Before you begin, ensure you have the following software installed:
 - **npm**: version 10.8.2
 - **Appium Doctor**: version 2.1.9
 - **UI Automator**: version 3.7.2
+- **Android** version 11
+- **Phone Model** version Nexus 6
 
 ### Java
 Ensure you have the correct version of Java installed. You can verify your Java installation with:  

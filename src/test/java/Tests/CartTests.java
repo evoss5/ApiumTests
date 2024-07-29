@@ -18,8 +18,6 @@ public class CartTests extends BaseTest {
     @Test
     public void removeItemsFromCart() {
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.removeItem();
@@ -28,17 +26,14 @@ public class CartTests extends BaseTest {
 
     @Test
     public void addProductToCart() {
-        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("Add To Cart");
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());;
         home.addToCartClick();
+        Assert.assertEquals(home.checkIfNumberOfProductsIsNotEvenOne(), 1);
     }
 
     @Test
     public void increaseNumberOfItemsBought() {
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("Add To Cart");
         home.increaseNumberOfProductsBought();
         Assert.assertNotEquals(home.checkIfNumberOfProductsIsNotEvenOne(), 1);
         // TODO: 14.07.2024 Sprawdzić jeszcze raz asercję
@@ -46,61 +41,49 @@ public class CartTests extends BaseTest {
 
     @Test
     public void proceedToCheckout() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
-        login = home.goToLoginPage();
+        login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
+        Assert.assertTrue(cart.isGoToPaymentButtonVisible(), "Go to Payment button is not visible");
 
     }
 
     @Test
     public void checkIfYouCanProceedToPaymentIfSomeDataIsNotFilled() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
-        login = home.goToLoginPage();
+        login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
         cart.addressLineFill("Poznanska 13");   // TODO: 24.07.2024 adres obowiązkowy i opcjonalny 
         cart.cityFieldFill("Konin");
-        natives.scrollToElementByText("Zip Code");
+        cart.zipCodeFieldFill("62-100");
         cart.goToPaymentButtonClick();
         Assert.assertEquals(cart.IsProvideYourCountryMessageIsDisplayed(), "Please provide your country.", "Provide your country message does not popup");
     }
 
     @Test
     public void checkIfYouCanProceedToPaymentMethod() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
-        login = home.goToLoginPage();
+        login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
-        natives.scrollToElementByText("Zip Code"); // TODO: 24.07.2024  zrobić metodę na kliknięcie zipCode i wrzucić tam metodę scroll 
         cart.zipCodeFieldFill("62-100");
         service = new Service(driver);
         String randomCountry = service.getRandomValue(service.countries());
@@ -111,26 +94,21 @@ public class CartTests extends BaseTest {
 
     @Test
     public void checkIfYouCanProceedWholeTransaction() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
-        login = home.goToLoginPage();
+        login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("Add To Cart");
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
-        natives.scrollToElementByText("Zip Code");
         cart.zipCodeFieldFill("62-100");
         service = new Service(driver);
-        String ramndomCountry = service.getRandomValue(service.countries());
-        cart.countryFieldFill(ramndomCountry);
+        String randomCountry = service.getRandomValue(service.countries());
+        cart.countryFieldFill(randomCountry);
         cart.goToPaymentButtonClick();
         Assert.assertTrue(cart.isPaymentMessageMethodMessageVisible(), "Enter Payment Method Message is not visible");
         cart.fullnameFieldFill("Evo Evo");
@@ -144,9 +122,7 @@ public class CartTests extends BaseTest {
 
     @Test
     public void checkIfColorOfTheProductsIsChanged() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
-        login = home.goToLoginPage();
+        login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
@@ -162,14 +138,11 @@ public class CartTests extends BaseTest {
 
     @Test
     public void checkIfTheAppIsClosingDown() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.apiCallsButtonClick();
         natives = new NativeDeviceActions(driver);
         natives.closeApp();
     }
 
-
 }
-// TODO: 24.07.2024 UIAutomatin version, wersja android, i telefon
+
 
