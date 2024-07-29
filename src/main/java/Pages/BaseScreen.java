@@ -23,7 +23,6 @@ public class BaseScreen {
     public BaseScreen(AndroidDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
-        natives = new NativeDeviceActions(driver);
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 

@@ -22,8 +22,6 @@ public class CatalogTests extends BaseTest{
     }
     @Test
     public void checkIfYouCanSetRating() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
@@ -34,11 +32,10 @@ public class CatalogTests extends BaseTest{
     }
     @Test
     public void sortProductsByDesc() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         login = home.goToLoginPage();
         login.logInAsExistingUser();
         login.loginButtonClick();
-        topNavigationBar.sortButtonClick("Descending");
+        topNavigationBar.sortButtonClick();
+        topNavigationBar.sortProductsAscOrDesc();
     }
 }

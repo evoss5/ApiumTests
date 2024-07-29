@@ -1,6 +1,7 @@
 package Pages.WebView;
 
 import Pages.BaseScreen;
+import Pages.Native.NativeDeviceActions;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -37,8 +38,9 @@ public class WebViewHandle extends BaseScreen {
         }
         return this;
     }
-      public WebViewHandle scrollDownToFooter() {
-        natives.swipeManyTimes(10);
+      public WebViewHandle scrollDown(int numberOfTimes) {
+        natives = new NativeDeviceActions(driver);
+        natives.swipeManyTimes(numberOfTimes);
         return this;
     }
 
@@ -47,7 +49,5 @@ public class WebViewHandle extends BaseScreen {
 
 // TODO: 19.07.2024  zrobić jedną metode to switach contextu
 // TODO: 19.07.2024 zrobic klase utils  oraz exceptions**
-//zrobić topNavigationBar, Navigationbar, webView
-// TODO: 19.07.2024 ustawić geolokalizacja   capabilities
 
 

@@ -20,37 +20,33 @@ public class WebViewTests extends BaseTest {
 
     @Test
     public void changeContextIntoWebView() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
         String context = driver.getContext();
         System.out.println("Obecny context to : " + context);
+        Assert.assertTrue(loginWeb.isLoginButtonClickable(), "Login button is not clickable");
     }
 
     @Test
     public void loginToThePage() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        homeWeb = loginWeb.loginButtonCLick();
+        homeWeb = loginWeb.loginButtonClick();
+        Assert.assertTrue(homeWeb.isSwagLabsBannerVisible());
     }
 
     @Test
     public void addProductToTheCart() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        homeWeb = loginWeb.loginButtonCLick();
+        homeWeb = loginWeb.loginButtonClick();
         homeWeb.addProductToTheCartClick();
         Assert.assertTrue(homeWeb.isProductShownInTheCart(), "Product is not in the cart");
         webView = new WebViewHandle(driver);
@@ -61,42 +57,38 @@ public class WebViewTests extends BaseTest {
 
     @Test
     public void sortProducts() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        homeWeb = loginWeb.loginButtonCLick();
+        homeWeb = loginWeb.loginButtonClick();
         homeWeb.sortProductsBy();
+        Assert.assertTrue(homeWeb.isSauceLabsBackpackIconVisible());
     }
 
     @Test
     public void goToTheFooterOfThePage() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        homeWeb = loginWeb.loginButtonCLick();
+        homeWeb = loginWeb.loginButtonClick();
         webView = new WebViewHandle(driver);
         webView.switchBackToNative();
-//        webView.scrollDownToFooter();
+        webView.scrollDown(10);
+        Assert.assertTrue(homeWeb.isSauceLabsBackpackIconVisible());
     }
 
     @Test
     public void finishOrderProduct() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        homeWeb = loginWeb.loginButtonCLick();
+        homeWeb = loginWeb.loginButtonClick();
         cartWeb = homeWeb.cartButtonClick();
         cartWeb.checkoutButtonClick();
         cartWeb.firstNameFieldFill("Evo");
@@ -109,14 +101,12 @@ public class WebViewTests extends BaseTest {
 
     @Test
     public void checkIfTheCartIsNotEmpty() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        homeWeb = loginWeb.loginButtonCLick();
+        homeWeb = loginWeb.loginButtonClick();
         homeWeb.addProductToTheCartClick();
         webView = new WebViewHandle(driver);
         webView.switchBackToNative();
@@ -128,8 +118,6 @@ public class WebViewTests extends BaseTest {
 
     @Test
     public void logOutFromAccount() {
-//        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
@@ -145,8 +133,7 @@ public class WebViewTests extends BaseTest {
     }
     @Test
     public void switchContextToWebView() {
-        topNavigationBar = new TopNavigationBar(driver);
-        topNavigationBar.hamburgerMenuClick();
         home.goToWebView();
     }
+
 }

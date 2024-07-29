@@ -11,6 +11,7 @@ import java.util.Random;
 
 public class HomeScreen extends BaseScreen {
     private Random random = new Random();
+    public LoginScreen loginWeb;
 
     @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-backpack']")
     private WebElement addProductToCart;
@@ -22,8 +23,14 @@ public class HomeScreen extends BaseScreen {
     private WebElement cartButton;
     @FindBy(xpath = "//span[@class='shopping_cart_badge']")
     private WebElement productsNumberInCart;
+    @FindBy (xpath = "//div[@class='app_logo']")
+    private WebElement swagLabsBanner;
+    @FindBy(xpath = "//div[@class='inventory_item_name ' and text()='Sauce Labs Backpack']")
+    private WebElement sauceLabsBackpackIcon;
+
     public HomeScreen(AndroidDriver driver) {
         super(driver);
+        this.loginWeb = new LoginScreen(driver);
     }
     public HomeScreen addProductToTheCartClick() {
         clickElement(addProductToCart);
@@ -48,5 +55,18 @@ public class HomeScreen extends BaseScreen {
     }
     public String numberOfProducts() {
         return productsNumberInCart.getText();
+    }
+    public boolean isSwagLabsBannerVisible() {
+        wait.until(ExpectedConditions.visibilityOf(swagLabsBanner));
+        return true;
+    }
+    public boolean isSauceLabsBackpackIconVisible() {
+        wait.until(ExpectedConditions.invisibilityOf(sauceLabsBackpackIcon));
+        return true;
+    }
+    public CartScreen goToWebCartScreen() {
+        loginWeb.loginButtonClick();
+        cartButtonClick();
+        return new CartScreen(driver);
     }
 }

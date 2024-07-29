@@ -8,6 +8,10 @@ Before you begin, ensure you have the following software installed:
 - **Appium**: version 2.11.2
 - **Node.js**: version 20.15.1
 - **npm**: version 10.8.2
+- **Appium Doctor**: version 2.1.9
+- **UI Automator**: version 3.7.2
+- **Android** version 11
+- **Phone Model** version Nexus 6
 
 ### Java
 Ensure you have the correct version of Java installed. You can verify your Java installation with:  
@@ -25,4 +29,11 @@ Ensure you have the correct version of Node.js installed. You can verify your No
 Ensure you have the correct version of npm installed. You can verify your npm installation with:  
   	npm -v
 
+### Appium Doctor 
+Ensure you have the correct version of Appium Doctor installed. You can verify your npm installation with: 
+appium-doctor --android
 
+
+### UI Automator
+
+Ensure you have the correct version of UI Automator installed UI Automator

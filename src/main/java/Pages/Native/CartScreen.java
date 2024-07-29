@@ -4,6 +4,7 @@ import Pages.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartScreen extends BaseScreen {
@@ -21,7 +22,7 @@ public class CartScreen extends BaseScreen {
     @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='City* input field']\n")
     private WebElement cityField;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='To Payment']\n")
-    private WebElement goToPaymentBUtton;
+    private WebElement goToPaymentButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Please provide your country.']\n")
     private WebElement provideYourCountryMessage;
     @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc='Zip Code* input field']\n")
@@ -44,6 +45,8 @@ public class CartScreen extends BaseScreen {
     private WebElement placeOrderButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Checkout Complete']\n")
     private WebElement checkoutCompleteMessage;
+    @FindBy(xpath = "//span[@class='shopping_cart_badge']")
+    private WebElement productsNumberInCart;
 
     public CartScreen(AndroidDriver driver) {
         super(driver);
@@ -73,7 +76,7 @@ public class CartScreen extends BaseScreen {
         return this;
     }
     public CartScreen goToPaymentButtonClick() {
-        clickElement(goToPaymentBUtton);
+        clickElement(goToPaymentButton);
         return this;
     }
     public String IsProvideYourCountryMessageIsDisplayed() {
@@ -81,7 +84,15 @@ public class CartScreen extends BaseScreen {
         return text;
     }
     public CartScreen zipCodeFieldFill(String zipCode) {
+        natives = new NativeDeviceActions(driver);
+        natives.scrollToElementByText("Zip Code");
         sendKeysToElement(zipCodeField, zipCode);
+        return this;
+    }
+    public CartScreen zipCodeButtonClick() {
+        natives = new NativeDeviceActions(driver);
+        natives.scrollToElementByText("ZipCode");
+        clickElement(zipCodeField);
         return this;
     }
     public CartScreen countryFieldFill(String countryName) {
@@ -120,7 +131,10 @@ public class CartScreen extends BaseScreen {
         wait.until(ExpectedConditions.visibilityOf(checkoutCompleteMessage));
         return true;
     }
+    public boolean isGoToPaymentButtonVisible() {
+        wait.until(ExpectedConditions.visibilityOf(goToPaymentButton));
+        return true;
+    }
 
 }
-// TODO: 24.07.2024   24.07.2024 zmienić metodę remove 
-// TODO: 24.07.2024  24.07.2024 inicjalizacja screenów w basescreen i użycie w beforemethods 
+// TODO: 24.07.2024   24.07.2024 zmienić metodę remove

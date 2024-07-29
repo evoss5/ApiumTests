@@ -1,10 +1,6 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-w
-G.idea/sonarlint/issuestore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,b\7\b7995c3d41886bad0e7a5d302fbde52ede45cf17
-Å
-Q.idea/sonarlint/securityhotspotstore/3/b/3b12afeb93545c3b2bb740ea648ebf1d184b60cf,d\6\d68997b117a4738704486870a3f981c28fe1f198
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
@@ -251,3 +247,13 @@ w
 G.idea/sonarlint/issuestore/7/2/72bc81f76ae9a3f25bf012aea0de4323fb2794ad,e\c\ec89267d7e572fae61fb1fa465e9de9a8bf64e6a
 w
 G.idea/sonarlint/issuestore/7/9/79232cd8d84f86364476177fd8284aa9fb1f1947,0\2\02b31ca069ee613bee8176c65eee3be8c254df1c
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+e
+5src/main/java/Pages/Native/components/SauceVideo.java,3\d\3d4ce9a594f797ceeaad8bb6f2a199105af114d6
+[
++src/test/java/Tests/SauceBotVideoTests.java,4\9\49d6d32be442cb2f72a9d504f9d43551780cd7e9
+b
+2src/main/java/Pages/Native/ResetAppStatePopup.java,7\2\72d34e26a0bba8f52be1ed2a736d791364621886
+m
+=src/main/java/Pages/Native/components/ResetAppStatePopup.java,a\d\ad092d703578ba281c83dfa86579032e9df2d301

@@ -40,14 +40,12 @@ public class TopNavigationBar extends BaseScreen {
         hamburgerMenu.click();
         return this;
     }
-    private TopNavigationBar sortButtonClick() {
+    public TopNavigationBar sortButtonClick() {
         clickElement(sortButton);
         return this;
     }
-    public TopNavigationBar sortButtonClick(String ascendingOrDescending) {
-        sortButtonClick();
-        WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@text='Name - " + ascendingOrDescending + "']\n"));
-        wait.until(ExpectedConditions.visibilityOf(element)).click();
+    public TopNavigationBar sortProductsAscOrDesc() {
+        driver.findElement(By.xpath("//android.widget.TextView[@text=\"Name - Descending\"]\n")).click();
         return this;
     }
     }

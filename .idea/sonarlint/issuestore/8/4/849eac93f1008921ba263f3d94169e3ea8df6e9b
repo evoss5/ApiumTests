@@ -1,8 +1,8 @@
 
-{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’²¡İıÿÿÿÿ8ïËê£2
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(’²¡İıÿÿÿÿ8Ò»Ğè2
 K
-java:S2387"."wait" is the name of a field in "BaseScreen".(µ‰8õËê£2
+java:S2387"."wait" is the name of a field in "BaseScreen".(µ‰8Ú»Ğè2
 x
-java:S1450"VRemove the "webView" field and declare it as a local variable in the relevant methods.(„ úÿÿÿÿ8öËê£2
+java:S1450"VRemove the "webView" field and declare it as a local variable in the relevant methods.(„ úÿÿÿÿ8Ú»Ğè2
 M
-java:S1068"+Remove this unused "TIMEOUT" private field.(ÍÔÿÿÿÿÿÿ8ùËê£2
+java:S1068"+Remove this unused "TIMEOUT" private field.(ÍÔÿÿÿÿÿÿ8ß»Ğè2

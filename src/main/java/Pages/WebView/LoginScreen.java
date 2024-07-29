@@ -4,6 +4,7 @@ import Pages.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginScreen extends BaseScreen {
 
@@ -24,8 +25,13 @@ public class LoginScreen extends BaseScreen {
         sendKeysToElement(passwordField, password);
         return this;
     }
-    public HomeScreen loginButtonCLick() {
+    public HomeScreen loginButtonClick() {
         clickElement(loginButton);
         return new HomeScreen(driver);
     }
+    public boolean isLoginButtonClickable() {
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+        return true;
+    }
+
 }
