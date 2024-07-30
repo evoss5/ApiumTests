@@ -121,10 +121,11 @@ public class CartTests extends BaseTest {
     }
 
     @Test
-    public void checkIfColorOfTheProductsIsChanged() {
+    public void checkIfColorOfTheProductsIsChanged() throws InterruptedException {
         login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
+        Assert.assertTrue(home.isMainBannerVisible());
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         home.chooseProductsColor("red");
     }
