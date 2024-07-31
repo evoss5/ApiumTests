@@ -205,6 +205,16 @@ public class HomeScreen extends BaseScreen {
         leftMenuBar.apiCallsButtonClick();
         return new LeftMenuBar(driver);
     }
+    public LeftMenuBar goToQRCodeScanner() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.qrCodeScannerButtonClick();
+        return new LeftMenuBar(driver);
+    }
+    public LeftMenuBar goToBiometricsMenu() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.biometricsMenuClick();
+        return new LeftMenuBar(driver);
+    }
 }
 
 

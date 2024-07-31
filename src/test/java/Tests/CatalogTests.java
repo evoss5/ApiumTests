@@ -12,7 +12,6 @@ public class CatalogTests extends BaseTest{
     public NativeDeviceActions natives;
     public TopNavigationBar topNavigationBar;
 
-
     @Test
     public void checkProductsHighlight() {
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
@@ -22,7 +21,7 @@ public class CatalogTests extends BaseTest{
     }
     @Test
     public void checkIfYouCanSetRating() {
-        login = home.goToLoginPage();
+        login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
@@ -32,9 +31,10 @@ public class CatalogTests extends BaseTest{
     }
     @Test
     public void sortProductsByDesc() {
-        login = home.goToLoginPage();
+        login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
+        topNavigationBar = new TopNavigationBar(driver);
         topNavigationBar.sortButtonClick();
         topNavigationBar.sortProductsAscOrDesc();
     }

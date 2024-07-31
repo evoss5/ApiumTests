@@ -134,6 +134,7 @@ public class WebViewTests extends BaseTest {
     @Test
     public void switchContextToWebView() {
         home.goToWebView();
+
     }
 
 }

@@ -37,5 +37,13 @@ public class MenuTests extends BaseTest {
         leftMenuBar = home.goToApiCalls();
         Assert.assertTrue(leftMenuBar.isApiCallsLogoVisible(), "Api Calls Logo is not visible");
     }
-
+    @Test
+    public void chooseQRcodeScannerInMenu() {
+        leftMenuBar = home.goToQRCodeScanner();
+    }
+    @Test
+    public void biometricsMenu() {
+        leftMenuBar = home.goToBiometricsMenu();
+        Assert.assertEquals(leftMenuBar.biometricMesssage(), "Allow login with FingerPrint");
+    }
 }

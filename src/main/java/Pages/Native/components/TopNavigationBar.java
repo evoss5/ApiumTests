@@ -4,12 +4,12 @@ import Pages.BaseScreen;
 import Pages.WebView.WebViewHandle;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TopNavigationBar extends BaseScreen {
+
 
 
 
@@ -21,6 +21,8 @@ public class TopNavigationBar extends BaseScreen {
     private WebElement hamburgerMenu;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"sort button\"]/android.widget.ImageView\n")
     private WebElement sortButton;
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"nameDesc\"]/android.widget.ImageView\n")
+    private WebElement sortProductsDesc;
 
     protected WebDriverWait wait;
     private WebViewHandle webView;
@@ -45,7 +47,7 @@ public class TopNavigationBar extends BaseScreen {
         return this;
     }
     public TopNavigationBar sortProductsAscOrDesc() {
-        driver.findElement(By.xpath("//android.widget.TextView[@text=\"Name - Descending\"]\n")).click();
+        clickElement(sortProductsDesc);
         return this;
     }
     }
