@@ -25,7 +25,7 @@ public class HomeScreen extends BaseScreen {
     private WebElement logInButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Add To Cart']\n")
     private WebElement addToCartButton;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='counter plus button']/android.widget.ImageView\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"counter plus button\"]/android.widget.ImageView\n")
     private WebElement counterPlusButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='1']\n")
     private WebElement numberOfProducts;
@@ -49,6 +49,7 @@ public class HomeScreen extends BaseScreen {
     private WebElement aboutButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Product Highlights']\n")
     private WebElement productHighlightsText;
+
 
 
     public HomeScreen(AndroidDriver driver) {
@@ -95,12 +96,12 @@ public class HomeScreen extends BaseScreen {
     }
 
     public void increaseNumberOfProductsBought() {
+        natives.scrollToElementByText("Add To Cart");
         clickElement(counterPlusButton);
     }
 
     public String checkIfNumberOfProductsIsNotEvenOne() {
-        return driver.findElement(AppiumBy.xpath("\t\n" +
-                "//android.widget.TextView[@text=\"1\"]")).getAttribute("text");
+        return driver.findElement(AppiumBy.accessibilityId("new UiSelector().text(\"1\")\n")).getText();
     }
 
     public boolean isMainBannerVisible() {
@@ -129,14 +130,14 @@ public class HomeScreen extends BaseScreen {
         return new CartScreen(driver);
     }
 
-    public HomeScreen chooseProductsColor(String color) {
+    public HomeScreen chooseProductsColor(String color) throws InterruptedException {
 //        WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n"));
-        driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n")).click();
-
-//        clickElement(productColor);
+        Thread.sleep(2000);
+        WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n"));
+        clickElement(productColor);
         return this;
     }
-
+    
     public HomeScreen apiCallsButtonClick() {
         clickElement(apiCallsButton);
         return this;
@@ -202,6 +203,16 @@ public class HomeScreen extends BaseScreen {
     public LeftMenuBar goToApiCalls() {
         topNavigationBar.hamburgerMenuClick();
         leftMenuBar.apiCallsButtonClick();
+        return new LeftMenuBar(driver);
+    }
+    public LeftMenuBar goToQRCodeScanner() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.qrCodeScannerButtonClick();
+        return new LeftMenuBar(driver);
+    }
+    public LeftMenuBar goToBiometricsMenu() {
+        topNavigationBar.hamburgerMenuClick();
+        leftMenuBar.biometricsMenuClick();
         return new LeftMenuBar(driver);
     }
 }

@@ -102,6 +102,5 @@ public class NativeDeviceActions {
     }
 }
 
-// TODO: 23.07.2024 zrobić packageInfo na temat UIautomator
-// TODO: 23.07.2024 zrobić javaDoc do CatalogPage etc. 
-// TODO: 23.07.2024 zrobić plik readme z wersjami aplikacji jakie używam 
+
+

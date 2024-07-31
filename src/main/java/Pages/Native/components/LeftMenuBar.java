@@ -3,6 +3,7 @@ package Pages.Native.components;
 import Pages.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -28,6 +29,14 @@ public class LeftMenuBar extends BaseScreen {
     private WebElement apiCallsIcon;
     @AndroidFindBy(accessibility = "menu item log in")
     private WebElement logInButton;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"QR Code Scanner\"]\n")
+    private WebElement qrCodeScanner;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"FingerPrint\"]\n")
+    private WebElement biometricsMenuButton;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/alertTitle\"]\n")
+    private WebElement biometricMessage;
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"android:id/button1\"]\n")
+    private WebElement biometricOkMessage;
 
     public LeftMenuBar(AndroidDriver driver) {
         super(driver);
@@ -71,7 +80,21 @@ public class LeftMenuBar extends BaseScreen {
     public ResetAppStatePopup resetAppStateButtonClick() {
         clickElement(resetAppStateButton);
         return new ResetAppStatePopup(driver);
-
+    }
+    public LeftMenuBar qrCodeScannerButtonClick() {
+        clickElement(qrCodeScanner);
+        return this;
+    }
+    public LeftMenuBar biometricsMenuClick() {
+        clickElement(biometricsMenuButton);
+        return this;
+    }
+    public String biometricMesssage() {
+        if (biometricMessage.isDisplayed()) {
+            clickElement(biometricOkMessage);
+        }
+        String text = driver.findElement(By.xpath("//android.widget.TextView[@text=\"Allow login with FingerPrint\"]\n")).getText();
+        return text;
     }
 
 }

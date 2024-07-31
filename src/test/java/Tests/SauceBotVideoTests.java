@@ -30,6 +30,4 @@ public class SauceBotVideoTests extends BaseTest {
         sauceVideo.fullScreenClick();
         sauceVideo.videoVolumeUpClick();
     }
-
-
 }

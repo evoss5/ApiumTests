@@ -253,7 +253,5 @@ e
 5src/main/java/Pages/Native/components/SauceVideo.java,3\d\3d4ce9a594f797ceeaad8bb6f2a199105af114d6
 [
 +src/test/java/Tests/SauceBotVideoTests.java,4\9\49d6d32be442cb2f72a9d504f9d43551780cd7e9
-b
-2src/main/java/Pages/Native/ResetAppStatePopup.java,7\2\72d34e26a0bba8f52be1ed2a736d791364621886
 m
 =src/main/java/Pages/Native/components/ResetAppStatePopup.java,a\d\ad092d703578ba281c83dfa86579032e9df2d301
