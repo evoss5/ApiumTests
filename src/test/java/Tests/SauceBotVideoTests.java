@@ -1,6 +1,6 @@
 package Tests;
 
-import Pages.Native.components.SauceVideo;
+import Page.Native.component.SauceVideo;
 import org.testng.annotations.Test;
 
 public class SauceBotVideoTests extends BaseTest {
@@ -30,4 +30,7 @@ public class SauceBotVideoTests extends BaseTest {
         sauceVideo.fullScreenClick();
         sauceVideo.videoVolumeUpClick();
     }
+
+    //todo dodać asercje
+    // TODO: 01.08.2024 asercja z czasem(15 sekund)
 }

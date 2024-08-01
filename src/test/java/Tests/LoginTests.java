@@ -1,7 +1,5 @@
 package Tests;
 
-import Pages.Native.components.TopNavigationBar;
-import Pages.WebView.WebViewHandle;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,13 +7,12 @@ import java.io.IOException;
 
 public class LoginTests extends BaseTest {
     public Service service;
-    public WebViewHandle webView;
-    public TopNavigationBar topNavigationBar;
+
 
 
     @Test
     public void unsuccessfulLogIn() {
-        login = home.goToLoginPage();
+        login = home.goToLoginScreen();
         login.usernameFieldFill("maciek123@wp.pl");
         login.passwordFieldFill("maciej123!");
         login.loginButtonClick();

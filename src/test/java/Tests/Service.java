@@ -11,7 +11,7 @@ import java.util.Random;
 public class Service {
     Random random = new Random();
 
-    public Service(AndroidDriver driver) {
+    public Service(AndroidDriver driver) {  // TODO: 01.08.2024 poprawić, nie potrzeba drivera
     }
 
     public ArrayList<String> countries() {
@@ -39,14 +39,15 @@ public class Service {
     }
 
     public String getRandomValue(ArrayList<String> list) {
-        int i = random.nextInt(list.size());
-        return list.get(i);
+        return list.get(random.nextInt(list.size()));
     }
 
     public String cardNumber() {
-        String cardNumber = String.valueOf(random.nextInt(1000, 9999)) + String.valueOf(random.nextInt(1000, 9999)) + String.valueOf(random.nextInt(1000, 9999)) + String.valueOf(random.nextInt(1000, 9999));
+        String cardNumber = random.nextInt(1000, 9999) + String.valueOf(random.nextInt(1000, 9999)) + random.nextInt(1000, 9999) + String.valueOf(random.nextInt(1000, 9999));
         return cardNumber;
     }
+
+    // TODO: 01.08.2024 posprzątać klasę
     public String expirationDate() {
         String date = String.valueOf(random.nextInt(10, 13) + String.valueOf(random.nextInt(25, 40)));
         return date;

@@ -1,16 +1,11 @@
 package Tests;
 
-import Pages.Native.components.LeftMenuBar;
-import Pages.Native.components.ResetAppStatePopup;
-import Pages.Native.components.TopNavigationBar;
-import Pages.WebView.WebViewHandle;
+import Page.Native.component.LeftMenuBar;
+import Page.Native.component.ResetAppStatePopup;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class MenuTests extends BaseTest {
-    public Service service;
-    public WebViewHandle webView;
-    public TopNavigationBar topNavigationBar;
     public LeftMenuBar leftMenuBar;
     public ResetAppStatePopup reset;
 
