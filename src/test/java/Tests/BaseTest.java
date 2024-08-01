@@ -1,11 +1,11 @@
 package Tests;
 
-import Pages.Native.HomeScreen;
-import Pages.Native.LoginScreen;
-import Pages.Native.NativeDeviceActions;
-import Pages.Native.components.TopNavigationBar;
+import Page.Native.HomeScreen;
+import Page.Native.LoginScreen;
+import Page.Native.NativeDeviceActions;
+import Page.Native.component.TopNavigationBar;
+import Page.WebView.ContextHandler;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
 
@@ -14,11 +14,12 @@ import java.net.URL;
 
 public class BaseTest {
     public AndroidDriver driver;
-    protected WebDriver webDriver;
     protected HomeScreen home;
     protected LoginScreen login;
-    protected NativeDeviceActions navigate;
+    protected NativeDeviceActions natives;
+    protected ContextHandler webView;
     protected TopNavigationBar topNavigationBar;
+
 
     @BeforeMethod(alwaysRun = true)
     public void setup() throws MalformedURLException {
@@ -30,14 +31,16 @@ public class BaseTest {
         dc.setCapability("appium:automationName", "uiAutomator2");
         dc.setCapability("appium:app", "D://Appium//Apps//myDemoApp.apk");
         dc.setCapability("chromedriverExecutable", "C://driverForAppium/chromedriver.exe");
+        dc.setCapability("autoGrantPermissions", true);
         dc.setCapability("locationServiceEnabled", true);
         dc.setCapability("locationServiceAuthorized", true);
 
 
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
-        navigate = new NativeDeviceActions(driver);
+        natives = new NativeDeviceActions(driver);
         home = new HomeScreen(driver);
-
+        webView = new ContextHandler(driver);
+        topNavigationBar = new TopNavigationBar(driver);
     }
 
 //    @AfterTest

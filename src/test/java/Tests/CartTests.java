@@ -1,9 +1,7 @@
 package Tests;
 
-import Pages.Native.CartScreen;
-import Pages.Native.NativeDeviceActions;
-import Pages.Native.components.ProductList;
-import Pages.Native.components.TopNavigationBar;
+import Page.Native.CartScreen;
+import Page.Native.component.ProductList;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,8 +9,7 @@ public class CartTests extends BaseTest {
 
     public CartScreen cart;
     public Service service;
-    public NativeDeviceActions natives;
-    public TopNavigationBar topNavigationBar;
+
 
 
     @Test
@@ -45,7 +42,7 @@ public class CartTests extends BaseTest {
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
-        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName()); // TODO: 01.08.2024 zrobić metodę, która randomowo wybiera produkt
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
@@ -132,7 +129,6 @@ public class CartTests extends BaseTest {
 
     @Test
     public void lockAndUnlockPhone() {
-        natives = new NativeDeviceActions(driver);
         natives.lockDevice();
         natives.unlockDevice();
     }
@@ -140,7 +136,6 @@ public class CartTests extends BaseTest {
     @Test
     public void checkIfTheAppIsClosingDown() {
         home.apiCallsButtonClick();
-        natives = new NativeDeviceActions(driver);
         natives.closeApp();
     }
 

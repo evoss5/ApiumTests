@@ -1,21 +1,17 @@
 package Tests;
 
-import Pages.Native.NativeDeviceActions;
-import Pages.Native.components.ProductList;
-import Pages.Native.components.TopNavigationBar;
+import Page.Native.component.ProductList;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CatalogTests extends BaseTest{
 
 
-    public NativeDeviceActions natives;
-    public TopNavigationBar topNavigationBar;
+
 
     @Test
     public void checkProductsHighlight() {
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives = new NativeDeviceActions(driver);
         natives.scrollToElementByText("Product Highlights");
         Assert.assertEquals(home.productHighlightsGetText(), "Product Highlights", "There is not Product Highlights text");
     }
@@ -34,7 +30,6 @@ public class CatalogTests extends BaseTest{
         login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
-        topNavigationBar = new TopNavigationBar(driver);
         topNavigationBar.sortButtonClick();
         topNavigationBar.sortProductsAscOrDesc();
     }
