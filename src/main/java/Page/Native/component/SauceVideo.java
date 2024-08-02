@@ -23,6 +23,12 @@ public WebDriver WebDriver;
     private WebElement dotButton;
     @AndroidFindBy (xpath = "//android.view.ViewGroup[@content-desc=\"video icon stop\"]\n")
     private WebElement videoStopButton;
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"video icon volume-mute\"]\n")
+    private WebElement muteSoundIcon;
+    @AndroidFindBy (xpath = "//button[@title='Exit full screen']")
+    private WebElement exitFullscreenButton;
+    @AndroidFindBy (tagName = "iframe")
+    private WebElement iframe;
     public SauceVideo(AndroidDriver driver) {
         super(driver);
     }
@@ -57,6 +63,21 @@ public WebDriver WebDriver;
         clickElement(videoStopButton);
         return this;
     }
+    public boolean isPlayButtonVisible() {
+        isElementVisible(videoPlayButton);
+        return true;
+    }
+    public boolean isMuteSoundIconVisible() {
+        isElementVisible(muteSoundIcon);
+        return true;
+    }
+    public String timeGetText() {
+        WebElement element = driver.findElement(By.xpath("//android.view.View[@text=\"0:00 / 3:25\"]\n"));
+        return elementGetText(element);
+    }
+    public SauceVideo exitFullscreenButtonClick() {
+        clickElement(exitFullscreenButton);
+        return this;
+    }
+    }
 
-
-}

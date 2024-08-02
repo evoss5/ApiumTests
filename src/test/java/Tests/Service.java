@@ -1,7 +1,5 @@
 package Tests;
 
-import io.appium.java_client.android.AndroidDriver;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,10 +8,6 @@ import java.util.Random;
 
 public class Service {
     Random random = new Random();
-
-    public Service(AndroidDriver driver) {  // TODO: 01.08.2024 poprawić, nie potrzeba drivera
-    }
-
     public ArrayList<String> countries() {
         ArrayList<String> countriesList = new ArrayList<>();
         countriesList.add("Poland");
@@ -43,18 +37,14 @@ public class Service {
     }
 
     public String cardNumber() {
-        String cardNumber = random.nextInt(1000, 9999) + String.valueOf(random.nextInt(1000, 9999)) + random.nextInt(1000, 9999) + String.valueOf(random.nextInt(1000, 9999));
-        return cardNumber;
+        return random.nextInt(1000, 9999) + String.valueOf(random.nextInt(1000, 9999)) + random.nextInt(1000, 9999) + random.nextInt(1000, 9999);
     }
 
-    // TODO: 01.08.2024 posprzątać klasę
     public String expirationDate() {
-        String date = String.valueOf(random.nextInt(10, 13) + String.valueOf(random.nextInt(25, 40)));
-        return date;
+        return random.nextInt(10, 13) + String.valueOf(random.nextInt(25, 40));
     }
     public String randomSecurityCode() {
         return String.valueOf(random.nextInt(100, 999));
-
     }
     public String getCredential(String credentialName) throws IOException {
         FileReader reader = new FileReader("credentials");

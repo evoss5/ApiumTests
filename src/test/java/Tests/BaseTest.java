@@ -4,6 +4,7 @@ import Page.Native.HomeScreen;
 import Page.Native.LoginScreen;
 import Page.Native.NativeDeviceActions;
 import Page.Native.component.TopNavigationBar;
+import Page.Utilities;
 import Page.WebView.ContextHandler;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,6 +20,7 @@ public class BaseTest {
     protected NativeDeviceActions natives;
     protected ContextHandler webView;
     protected TopNavigationBar topNavigationBar;
+    protected Utilities utilities;
 
 
     @BeforeMethod(alwaysRun = true)
@@ -41,7 +43,10 @@ public class BaseTest {
         home = new HomeScreen(driver);
         webView = new ContextHandler(driver);
         topNavigationBar = new TopNavigationBar(driver);
+        utilities = new Utilities(driver);
+
     }
+
 
 //    @AfterTest
 //    public void close() {

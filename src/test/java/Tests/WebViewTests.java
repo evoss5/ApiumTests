@@ -13,6 +13,7 @@ public class WebViewTests extends BaseTest {
 
 
 
+
     @Test
     public void changeContextIntoWebView() {
         home.goToWebView();
@@ -69,7 +70,7 @@ public class WebViewTests extends BaseTest {
         loginWeb.passwordField("secret_sauce");
         homeWeb = loginWeb.loginButtonClick();
         webView.switchBackToNative();
-        webView.scrollDown(10);
+        utilities.swipeDown(10);
         Assert.assertTrue(homeWeb.isSauceLabsBackpackIconVisible());
     }
 
@@ -101,7 +102,7 @@ public class WebViewTests extends BaseTest {
         homeWeb = loginWeb.loginButtonClick();
         homeWeb.addProductToTheCartClick();
         webView.switchBackToNative();
-        natives.swipeManyTimes2(2);
+        utilities.swipeUp(2);
         webView.switchToWebView();
         Assert.assertNotEquals(homeWeb.numberOfProducts(), "0", "There are not products in the cart");
     }

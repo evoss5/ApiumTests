@@ -1,7 +1,6 @@
 package Page;
 
 import Page.Native.NativeDeviceActions;
-import Page.WebView.ContextHandler;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.*;
@@ -12,14 +11,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.time.Duration;
+import java.util.logging.Logger;
 
 
 public class BaseScreen {
     protected AndroidDriver driver;
     protected NativeDeviceActions natives;
     protected WebDriverWait wait;
-    protected ContextHandler context;
     private static final int TIMEOUT = 10;
+    private static final Logger logger = Logger.getLogger(BaseScreen.class.getName());
+
+
 
 
     public BaseScreen(AndroidDriver driver) {
@@ -115,7 +117,7 @@ public class BaseScreen {
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
         } catch (NoSuchElementException | TimeoutException e) {
-            System.out.println("Element is not visible: " + e.getMessage());
+            logger.warning("Element is not visible:  + e.getMessage()");
             return false;
         }
     }
@@ -124,7 +126,7 @@ public class BaseScreen {
             wait.until(ExpectedConditions.elementToBeClickable(element));
             return true;
         } catch (ElementNotInteractableException | NoSuchElementException | StaleElementReferenceException e) {
-            System.out.println("Element is not clickable: " + e.getMessage());
+            logger.warning("Element is not clickable: " + e.getMessage());
             return false;
         }
     }

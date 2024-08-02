@@ -2,6 +2,7 @@ package Page.Native;
 
 import Page.BaseScreen;
 import Page.Native.component.*;
+import Page.Utilities;
 import Page.WebView.ContextHandler;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -9,12 +10,16 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+import java.util.Random;
+
 public class HomeScreen extends BaseScreen {
     public ContextHandler webView;
 
     public TopNavigationBar topNavigationBar;
     public AndroidActionBar androidActionBar;
     public LeftMenuBar leftMenuBar;
+    public Utilities utilities;
 
 
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.ViewGroup\").instance(47)\n")
@@ -55,7 +60,9 @@ public class HomeScreen extends BaseScreen {
         this.leftMenuBar = new LeftMenuBar(driver);
         this.androidActionBar = new AndroidActionBar(driver);
         this.webView = new ContextHandler(driver);
-//        this.natives = new NativeDeviceActions(driver);
+        this.natives = new NativeDeviceActions(driver);
+        this.utilities = new Utilities(driver);
+
 
     }
 
@@ -187,6 +194,7 @@ public class HomeScreen extends BaseScreen {
 
     public SauceVideo goToSauceVideo() {
         topNavigationBar.hamburgerMenuClick();
+        natives.scrollToElementByText("Sauce Bot Video");
         leftMenuBar.sauceBoVideoButtonClick();
         return new SauceVideo(driver);
     }
@@ -220,7 +228,19 @@ public class HomeScreen extends BaseScreen {
         leftMenuBar.biometricsMenuClick();
         return new LeftMenuBar(driver);
     }
-}
+    public HomeScreen randomProductClick() {
+        List<WebElement> productList = driver.findElements(By.xpath("(//android.view.ViewGroup[@content-desc=\"store item\"])"));
+        Random random = new Random();
+        int listSize = random.nextInt(productList.size());
+        WebElement list = productList.get(listSize);
+        clickElement(list);
+        return this;
+    }
+
+        }
+
+
+
 
 
 
