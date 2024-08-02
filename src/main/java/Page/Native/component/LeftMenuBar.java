@@ -104,5 +104,5 @@ public class LeftMenuBar extends BaseScreen {
     }
 
 }
-// TODO: 01.08.2024  zrobić metodę w BaseScreenie na getText, która będzie powtarzać daną ilość razy
+
 

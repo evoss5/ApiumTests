@@ -29,6 +29,13 @@ public class CartTests extends BaseTest {
     }
 
     @Test
+    public void addRandomProductToCart() {
+        home.randomProductClick();
+        home.addToCartClick();
+
+    }
+
+    @Test
     public void increaseNumberOfItemsBought() {
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         home.increaseNumberOfProductsBought();
@@ -42,7 +49,7 @@ public class CartTests extends BaseTest {
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
-        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName()); // TODO: 01.08.2024 zrobić metodę, która randomowo wybiera produkt
+        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
@@ -74,7 +81,7 @@ public class CartTests extends BaseTest {
         login.logInAsExistingUser();
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible());
-        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
+        home.randomProductClick();
         home.addToCartClick();
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
@@ -82,7 +89,7 @@ public class CartTests extends BaseTest {
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
         cart.zipCodeFieldFill("62-100");
-        service = new Service(driver);
+        service = new Service();
         String randomCountry = service.getRandomValue(service.countries());
         cart.countryFieldFill(randomCountry);
         cart.goToPaymentButtonClick();
@@ -103,7 +110,7 @@ public class CartTests extends BaseTest {
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
         cart.zipCodeFieldFill("62-100");
-        service = new Service(driver);
+        service = new Service();
         String randomCountry = service.getRandomValue(service.countries());
         cart.countryFieldFill(randomCountry);
         cart.goToPaymentButtonClick();

@@ -39,7 +39,7 @@ public class LoginTests extends BaseTest {
     @Test
     private void logInByCredentials() throws IOException {
         login = home.goToLoginPage();
-        service = new Service(driver);
+        service = new Service();
         login.usernameFieldFill(service.getCredential("loginNative"));
         login.passwordFieldFill(service.getCredential("passwordNative"));
         login.loginButtonClick();

@@ -29,14 +29,7 @@ public class ContextHandler extends BaseScreen {
         }
         return this;
     }
-      public ContextHandler scrollDown(int numberOfTimes) {
-//        natives = new NativeDeviceActions(driver);
-        natives.swipeManyTimes(numberOfTimes);
-        return this;
-    }
 }
 
-// TODO: 19.07.2024 zrobic klase utils  oraz exceptions**
-// TODO: 01.08.2024 Nazwać klasę context handler, przenieść stąd scrollDown
 
 
