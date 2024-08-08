@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginScreen extends BaseScreen {
+    public ContextHandler webView;
 
     @FindBy(xpath = "//input[@id='user-name']")
     private WebElement userNameField;
@@ -15,6 +16,7 @@ public class LoginScreen extends BaseScreen {
     private WebElement loginButton;
     public LoginScreen(AndroidDriver driver) {
         super(driver);
+        this.webView = new ContextHandler(driver);
     }
     public LoginScreen userNameFieldFill(String username) {
         sendKeysToElement(userNameField, username);

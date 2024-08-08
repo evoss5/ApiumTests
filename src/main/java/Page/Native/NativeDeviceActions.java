@@ -21,13 +21,11 @@ public class NativeDeviceActions {
 
     public NativeDeviceActions getScreenSize() {
         Dimension size = driver.manage().window().getSize();
-        System.out.println(size);
         return this;
     }
 
     public NativeDeviceActions getSessionId() {
         SessionId sessionId = driver.getSessionId();
-        System.out.println(sessionId);
         return this;
     }
 

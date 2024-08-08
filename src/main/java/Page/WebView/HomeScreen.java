@@ -1,6 +1,8 @@
 package Page.WebView;
 
 import Page.BaseScreen;
+import Page.Native.component.TopNavigationBar;
+import Page.Utilities;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +13,9 @@ import java.util.Random;
 public class HomeScreen extends BaseScreen {
     private Random random = new Random();
     public LoginScreen loginWeb;
+    public ContextHandler webView;
+    public Utilities utilities;
+    public TopNavigationBar topNavigationBar;
 
     @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-backpack']")
     private WebElement addProductToCart;
@@ -30,9 +35,15 @@ public class HomeScreen extends BaseScreen {
     public HomeScreen(AndroidDriver driver) {
         super(driver);
         this.loginWeb = new LoginScreen(driver);
+        this.webView = new ContextHandler(driver);
+        this.utilities = new Utilities(driver);
+        this.topNavigationBar = new TopNavigationBar(driver);
     }
     public HomeScreen addProductToTheCartClick() {
         clickElement(addProductToCart);
+        webView.switchBackToNative();
+        utilities.swipeUp(2);
+        webView.switchToWebView();
         return this;
     }
     public boolean isProductShownInTheCart() {
@@ -53,6 +64,7 @@ public class HomeScreen extends BaseScreen {
         return new CartScreen(driver);
     }
     public String numberOfProducts() {
+
         return elementGetText(productsNumberInCart);
     }
     public boolean isSwagLabsBannerVisible() {
@@ -67,5 +79,13 @@ public class HomeScreen extends BaseScreen {
         loginWeb.loginButtonClick();
         cartButtonClick();
         return new CartScreen(driver);
+    }
+    public HomeScreen goToTheBottomOfThePage() {
+        utilities.swipeDown(10);
+        return this;
+    }
+    public boolean isCartButtonVisible() {
+        topNavigationBar.isCartButtonVisible();
+        return true;
     }
 }

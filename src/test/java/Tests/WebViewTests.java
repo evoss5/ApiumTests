@@ -44,9 +44,8 @@ public class WebViewTests extends BaseTest {
         loginWeb.passwordField("secret_sauce");
         homeWeb = loginWeb.loginButtonClick();
         homeWeb.addProductToTheCartClick();
-        Assert.assertTrue(homeWeb.isProductShownInTheCart(), "Product is not in the cart");
-        webView.switchBackToNative();
-        Assert.assertTrue(topNavigationBar.isCartButtonVisible());
+        Assert.assertTrue(homeWeb.isProductShownInTheCart(), "Product is not in the cart"); // TODO: 06.08.2024 zmiana kontekstu 
+        Assert.assertTrue(homeWeb.isCartButtonVisible());
     }
 
     @Test
@@ -56,7 +55,7 @@ public class WebViewTests extends BaseTest {
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        homeWeb = loginWeb.loginButtonClick();
+        homeWeb = loginWeb.loginButtonClick();         // TODO: 06.08.2024 Zapytać Chrystiana o zmianę kontekstu
         homeWeb.sortProductsBy();
         Assert.assertTrue(homeWeb.isSauceLabsBackpackIconVisible());
     }
@@ -69,8 +68,7 @@ public class WebViewTests extends BaseTest {
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
         homeWeb = loginWeb.loginButtonClick();
-        webView.switchBackToNative();
-        utilities.swipeDown(10);
+        homeWeb.goToTheBottomOfThePage();
         Assert.assertTrue(homeWeb.isSauceLabsBackpackIconVisible());
     }
 
@@ -101,9 +99,6 @@ public class WebViewTests extends BaseTest {
         loginWeb.passwordField("secret_sauce");
         homeWeb = loginWeb.loginButtonClick();
         homeWeb.addProductToTheCartClick();
-        webView.switchBackToNative();
-        utilities.swipeUp(2);
-        webView.switchToWebView();
         Assert.assertNotEquals(homeWeb.numberOfProducts(), "0", "There are not products in the cart");
     }
 
@@ -114,7 +109,6 @@ public class WebViewTests extends BaseTest {
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        webView.switchBackToNative();
         home.logOutFromAccount();
         home.logOutAcceptButtonClick();
         Assert.assertTrue(home.isSuccessfulyLoggedOutMessageVisible(), "The message is not visible");

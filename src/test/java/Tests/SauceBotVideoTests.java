@@ -1,6 +1,8 @@
 package Tests;
 
 import Page.Native.component.SauceVideo;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,6 +22,8 @@ public class SauceBotVideoTests extends BaseTest {
     public void forwardVideo() {
         sauceVideo = home.goToSauceVideo();
         sauceVideo.videoForwardButtonClick();
+        driver.switchTo().frame((WebElement) By.tagName("iframe"));
+        Assert.assertTrue(Integer.parseInt(sauceVideo.timeGetText()) >15);
 
     }
     @Test

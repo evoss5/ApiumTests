@@ -24,7 +24,7 @@ public class LoginTests extends BaseTest {
         login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
-        Assert.assertTrue(home.isMainBannerVisible(), "Maion banner is not visible");
+        Assert.assertTrue(home.isMainBannerVisible(), "Main banner is not visible");
     }
     @Test
     public void logOutFromAccount()  {
