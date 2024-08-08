@@ -17,21 +17,21 @@ public class Utilities extends BaseScreen {
     }
 
     public Utilities swipeUp(int numberOfTimes) {
-        swipeIt(numberOfTimes);
+        swipeIt(numberOfTimes, 0.90);
         return this;
     }
 
     public Utilities swipeDown(int numberOfTimes) {
-        swipeIt(numberOfTimes);
+        swipeIt(numberOfTimes, 0.20);
         return this;
     }
 
-    private Utilities swipeIt(int numberOfTimes) {
+    private Utilities swipeIt(int numberOfTimes, double upOrDown) {
         Dimension size = driver.manage().window().getSize();
         int startX = size.getWidth() / 2;
         int startY = size.getHeight() / 2;
         int endX = startX;
-        int endY = (int) (size.getHeight() * 0.90);
+        int endY = (int) (size.getHeight() * upOrDown);
 
         PointerInput point = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(point, 1)

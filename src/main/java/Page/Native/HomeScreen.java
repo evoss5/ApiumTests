@@ -106,7 +106,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public String checkIfNumberOfProductsIsNotEvenOne() {
-        return driver.findElement(AppiumBy.accessibilityId("new UiSelector().text(\"1\")\n")).getText();
+        return driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"1\").instance(0)\n")).getText();
     }
 
     public boolean isMainBannerVisible() {
@@ -115,8 +115,10 @@ public class HomeScreen extends BaseScreen {
     }
 
     public HomeScreen logOutFromAccount() {
+        webView.switchBackToNative();
         topNavigationBar.hamburgerMenuClick();
         clickElement(logOutButton);
+
         return this;
     }
 
@@ -172,7 +174,6 @@ public class HomeScreen extends BaseScreen {
 
     public Page.WebView.LoginScreen goToSiteButtonClick() {
         clickElement(goToSiteButton);
-        webView = new ContextHandler(driver);
         webView.switchToWebView();
         return new Page.WebView.LoginScreen(driver);
     }
@@ -183,6 +184,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public String productHighlightsGetText() {
+        natives.scrollToElementByText("Product Highlights");
         return elementGetText(productHighlightsText);
     }
 
@@ -234,6 +236,11 @@ public class HomeScreen extends BaseScreen {
         int listSize = random.nextInt(productList.size());
         WebElement list = productList.get(listSize);
         clickElement(list);
+        return this;
+    }
+    public HomeScreen sortProductButtonClick() {
+        topNavigationBar.sortButtonClick();
+        topNavigationBar.sortProductsAscOrDesc();
         return this;
     }
 

@@ -41,9 +41,8 @@ public class BaseTest {
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
         natives = new NativeDeviceActions(driver);
         home = new HomeScreen(driver);
-        webView = new ContextHandler(driver);
-        topNavigationBar = new TopNavigationBar(driver);
-        utilities = new Utilities(driver);
+
+
 
     }
 

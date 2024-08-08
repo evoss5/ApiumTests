@@ -12,7 +12,6 @@ public class CatalogTests extends BaseTest{
     @Test
     public void checkProductsHighlight() {
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
-        natives.scrollToElementByText("Product Highlights");
         Assert.assertEquals(home.productHighlightsGetText(), "Product Highlights", "There is not Product Highlights text");
     }
     @Test
@@ -29,8 +28,7 @@ public class CatalogTests extends BaseTest{
     public void sortProductsByDesc() {
         login = home.goToLoginScreen();
         login.logInAsExistingUser();
-        login.loginButtonClick();
-        topNavigationBar.sortButtonClick();
-        topNavigationBar.sortProductsAscOrDesc();
+        login.loginButtonClick(); // TODO: 06.08.2024 przejście do HomeScreena, zmienić wywoływanie klas typu TopNavigationBar, WebView, żeby były w metodach w screenach a nie w BaseTest
+        home.sortProductButtonClick();
     }
 }
