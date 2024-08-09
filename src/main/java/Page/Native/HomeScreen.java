@@ -198,6 +198,7 @@ public class HomeScreen extends BaseScreen {
         topNavigationBar.hamburgerMenuClick();
         natives.scrollToElementByText("Sauce Bot Video");
         leftMenuBar.sauceBoVideoButtonClick();
+        webView.switchToWebView();
         return new SauceVideo(driver);
     }
 
