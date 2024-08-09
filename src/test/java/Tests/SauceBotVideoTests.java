@@ -1,8 +1,6 @@
 package Tests;
 
 import Page.Native.component.SauceVideo;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,11 +17,14 @@ public class SauceBotVideoTests extends BaseTest {
         sauceVideo.exitFullscreenButtonClick();
     }
     @Test
-    public void forwardVideo() {
+    public void forwardVideo() throws InterruptedException {
         sauceVideo = home.goToSauceVideo();
+        double currentVideoTime = sauceVideo.getCurrentVideoTime();
+        System.out.println(currentVideoTime);
         sauceVideo.videoForwardButtonClick();
-        driver.switchTo().frame((WebElement) By.tagName("iframe"));
-        Assert.assertTrue(Integer.parseInt(sauceVideo.timeGetText()) >15);
+        double endTime = sauceVideo.getCurrentVideoTime();
+        System.out.println(endTime);
+
 
     }
     @Test

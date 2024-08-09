@@ -1,14 +1,20 @@
 package Page.Native.component;
 
 import Page.BaseScreen;
+import Page.WebView.ContextHandler;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SauceVideo extends BaseScreen {
+
     public WebDriver WebDriver;
+    public ContextHandler webView;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"video icon backward\"]\n")
     private WebElement videoBackwardButton;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"video icon play\"]")
@@ -30,8 +36,10 @@ public class SauceVideo extends BaseScreen {
     @AndroidFindBy(tagName = "iframe")
     private WebElement iframe;
 
+
     public SauceVideo(AndroidDriver driver) {
         super(driver);
+        this.webView = new ContextHandler(driver);
     }
 
     public SauceVideo videoBackwardButtonClick() {
@@ -45,6 +53,9 @@ public class SauceVideo extends BaseScreen {
     }
 
     public SauceVideo videoForwardButtonClick() {
+
+        driver.switchTo().defaultContent();
+        webView.switchBackToNative();
         clickElement(videoForwardButton);
         return this;
     }
@@ -83,8 +94,7 @@ public class SauceVideo extends BaseScreen {
     }
 
     public String timeGetText() {
-        WebElement element = driver.findElement(By.xpath("//android.view.View[@text=\"0:25 / 3:24\"]\n"));
-        return elementGetText(element);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.className("\"android.view.View\\n\""))).getText();
     }
 
     public SauceVideo exitFullscreenButtonClick() {
@@ -95,9 +105,11 @@ public class SauceVideo extends BaseScreen {
     public int checkTime() {
         String startTime = timeGetText();
         int i = convertTimeToSeconds(startTime);//sprawdzić czy to jest TimeStamp czy DateTime
-        clickElement(videoForwardButton);
+        System.out.println(i);
+        videoForwardButtonClick();
         String endTime = timeGetText();
         int i1 = convertTimeToSeconds(endTime);
+        System.out.println(i1);
         // endTime - startTime = 0 : 15;
         int timeDifference = i1 - i;
         return timeDifference;
@@ -108,6 +120,16 @@ public class SauceVideo extends BaseScreen {
         int minutes = Integer.parseInt(parts[0]);
         int seconds = Integer.parseInt(parts[1]);
         return minutes * 60 + seconds;
+    }
+
+    public double getCurrentVideoTime() {
+        webView.switchToWebView();
+        WebElement element = driver.findElement(By.tagName("iframe"));
+        driver.switchTo().frame(element);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (double) js.executeScript(
+                "return document.querySelector('video').currentTime;"
+        );
     }
 }
 
