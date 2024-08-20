@@ -1,6 +1,6 @@
 package Tests;
 
-import Page.Native.component.SauceVideo;
+import Component.SauceVideo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,15 +17,15 @@ public class SauceBotVideoTests extends BaseTest {
         sauceVideo.exitFullscreenButtonClick();
     }
     @Test
-    public void forwardVideo() throws InterruptedException {
+    public void forwardVideo() {
         sauceVideo = home.goToSauceVideo();
+        sauceVideo.videoStopButtonClick();
         double currentVideoTime = sauceVideo.getCurrentVideoTime();
-        System.out.println(currentVideoTime);
         sauceVideo.videoForwardButtonClick();
         double endTime = sauceVideo.getCurrentVideoTime();
-        System.out.println(endTime);
-
-
+        double timeDifference = endTime - currentVideoTime;
+        double roundedTimeDifference = Math.round(timeDifference);
+        Assert.assertEquals(roundedTimeDifference, 15);
     }
     @Test
     public void stopVideo() {
@@ -39,7 +39,5 @@ public class SauceBotVideoTests extends BaseTest {
         sauceVideo.videoVolumeUpClick();
         Assert.assertTrue(sauceVideo.isMuteSoundIconVisible(), "Sound is not mute");
     }
-
-    // TODO: 01.08.2024 asercja z czasem(15 sekund)
 }
 

@@ -1,7 +1,7 @@
 package Tests;
 
-import Page.Native.component.LeftMenuBar;
-import Page.Native.component.ResetAppStatePopup;
+import Component.LeftMenuBar;
+import Component.ResetAppStatePopup;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -35,7 +35,7 @@ public class MenuTests extends BaseTest {
     @Test
     public void chooseQRcodeScannerInMenu() {
         leftMenuBar = home.goToQRCodeScanner();
-    }
+    } // TODO: 19.08.2024 zrobić asercję do QR Scanner
     @Test
     public void biometricsMenu() {
         leftMenuBar = home.goToBiometricsMenu();

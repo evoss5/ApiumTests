@@ -1,6 +1,6 @@
-package Page;
+package Screen;
 
-import Page.Native.NativeDeviceActions;
+import Component.DeviceAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.*;
@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class BaseScreen {
     protected AndroidDriver driver;
-    protected NativeDeviceActions natives;
+    protected DeviceAction natives;
     protected WebDriverWait wait;
     private static final int TIMEOUT = 10;
     private static final Logger logger = Logger.getLogger(BaseScreen.class.getName());

@@ -1,6 +1,6 @@
-package Page.Native.component;
+package Component;
 
-import Page.BaseScreen;
+import Screen.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
@@ -17,24 +17,23 @@ public class LeftMenuBar extends BaseScreen {
     private WebElement clearButton;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='menu item reset app']\n")
     private WebElement resetAppStateButton;
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Sauce Bot Video\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sauce Bot Video']\n")
     private WebElement sauceBotVideoButton;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"video icon backward\"]\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='video icon backward']\n")
     private WebElement videoBackwardButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Api Calls\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Api Calls']\n")
     private WebElement apiCallsButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"API calls\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='API calls']\n")
     private WebElement apiCallsIcon;
     @AndroidFindBy(accessibility = "menu item log in")
     private WebElement logInButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"QR Code Scanner\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='QR Code Scanner']\n")
     private WebElement qrCodeScanner;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"FingerPrint\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='FingerPrint']\n")
     private WebElement biometricsMenuButton;
-    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/alertTitle\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@resource-id='android:id/alertTitle']\n")
     private WebElement biometricMessage;
-    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"android:id/button1\"]\n")
+    @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1']\n")
     private WebElement biometricOkMessage;
 
     public LeftMenuBar(AndroidDriver driver) {

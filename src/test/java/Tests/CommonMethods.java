@@ -6,8 +6,9 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Random;
 
-public class Service {
+public class CommonMethods {
     Random random = new Random();
+
     public ArrayList<String> countries() {
         ArrayList<String> countriesList = new ArrayList<>();
         countriesList.add("Poland");
@@ -18,8 +19,9 @@ public class Service {
         countriesList.add("Georgia");
         return countriesList;
     }
+
     public ArrayList<String> cardNumbers() {
-        ArrayList<String>cards = new ArrayList<>();
+        ArrayList<String> cards = new ArrayList<>();
 
         cards.add("2720002236506367");
         cards.add("5212928911688864");
@@ -32,7 +34,18 @@ public class Service {
         return cards;
     }
 
+    public ArrayList<String> product() {
+        ArrayList<String> productList = new ArrayList<>();
+        productList.add("Sauce Labs Backpack");
+        productList.add("Sauce Labs Bike Light");
+        productList.add("Sauce Labs Bolt T-Shirt");
+        productList.add("Sauce Labs Fleece Jacket");
+        productList.add("Sauce Labs Onesie");
+        return productList;
+    }
+
     public String getRandomValue(ArrayList<String> list) {
+        random = new Random();
         return list.get(random.nextInt(list.size()));
     }
 
@@ -43,13 +56,15 @@ public class Service {
     public String expirationDate() {
         return random.nextInt(10, 13) + String.valueOf(random.nextInt(25, 40));
     }
+
     public String randomSecurityCode() {
         return String.valueOf(random.nextInt(100, 999));
     }
+
     public String getCredential(String credentialName) throws IOException {
         FileReader reader = new FileReader("credentials");
         Properties properties = new Properties();
         properties.load(reader);
         return properties.getProperty(credentialName);
     }
-    }
+}

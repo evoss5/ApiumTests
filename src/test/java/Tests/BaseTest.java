@@ -1,11 +1,11 @@
 package Tests;
 
-import Page.Native.HomeScreen;
-import Page.Native.LoginScreen;
-import Page.Native.NativeDeviceActions;
-import Page.Native.component.TopNavigationBar;
-import Page.Utilities;
-import Page.WebView.ContextHandler;
+import Screen.Native.HomeScreen;
+import Screen.Native.LoginScreen;
+import Component.DeviceAction;
+import Component.TopNavigationBar;
+import Device.Action.SwipeAction;
+import Component.ContextHandler;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeMethod;
@@ -17,10 +17,11 @@ public class BaseTest {
     public AndroidDriver driver;
     protected HomeScreen home;
     protected LoginScreen login;
-    protected NativeDeviceActions natives;
+    protected DeviceAction natives;
+    protected CommonMethods commonMethods;
     protected ContextHandler webView;
     protected TopNavigationBar topNavigationBar;
-    protected Utilities utilities;
+    protected SwipeAction swipeAction;
 
 
     @BeforeMethod(alwaysRun = true)
@@ -39,8 +40,10 @@ public class BaseTest {
 
 
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
-        natives = new NativeDeviceActions(driver);
+        natives = new DeviceAction(driver);
         home = new HomeScreen(driver);
+        commonMethods = new CommonMethods();
+
 
 
 

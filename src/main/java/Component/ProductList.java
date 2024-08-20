@@ -1,4 +1,4 @@
-package Page.Native.component;
+package Component;
 
 public enum ProductList {
 

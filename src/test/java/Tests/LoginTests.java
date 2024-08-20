@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class LoginTests extends BaseTest {
-    public Service service;
+    public CommonMethods commonMethods;
 
 
 
@@ -39,9 +39,9 @@ public class LoginTests extends BaseTest {
     @Test
     private void logInByCredentials() throws IOException {
         login = home.goToLoginPage();
-        service = new Service();
-        login.usernameFieldFill(service.getCredential("loginNative"));
-        login.passwordFieldFill(service.getCredential("passwordNative"));
+        commonMethods = new CommonMethods();
+        login.usernameFieldFill(commonMethods.getCredential("loginNative"));
+        login.passwordFieldFill(commonMethods.getCredential("passwordNative"));
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible(), "Main banner is not visible");
     }
