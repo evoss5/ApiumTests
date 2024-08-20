@@ -1,6 +1,7 @@
-package Page;
+package Device.Action;
 
-import Page.Native.NativeDeviceActions;
+import Component.DeviceAction;
+import Screen.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.interactions.Pause;
@@ -10,23 +11,23 @@ import org.openqa.selenium.interactions.Sequence;
 import java.time.Duration;
 import java.util.Collections;
 
-public class Utilities extends BaseScreen {
-    public Utilities(AndroidDriver driver) {
+public class SwipeAction extends BaseScreen {
+    public SwipeAction(AndroidDriver driver) {
         super(driver);
-        natives = new NativeDeviceActions(driver);
+        natives = new DeviceAction(driver);
     }
 
-    public Utilities swipeUp(int numberOfTimes) {
+    public SwipeAction swipeUp(int numberOfTimes) {
         swipeIt(numberOfTimes, 0.90);
         return this;
     }
 
-    public Utilities swipeDown(int numberOfTimes) {
+    public SwipeAction swipeDown(int numberOfTimes) {
         swipeIt(numberOfTimes, 0.20);
         return this;
     }
 
-    private Utilities swipeIt(int numberOfTimes, double upOrDown) {
+    private SwipeAction swipeIt(int numberOfTimes, double upOrDown) {
         Dimension size = driver.manage().window().getSize();
         int startX = size.getWidth() / 2;
         int startY = size.getHeight() / 2;

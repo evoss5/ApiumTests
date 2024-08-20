@@ -1,14 +1,14 @@
 package Tests;
 
-import Page.Native.CartScreen;
-import Page.Native.component.ProductList;
+import Component.ProductList;
+import Screen.Native.CartScreen;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CartTests extends BaseTest {
 
     public CartScreen cart;
-    public Service service;
+
 
 
 
@@ -32,6 +32,7 @@ public class CartTests extends BaseTest {
     public void addRandomProductToCart() {
         home.randomProductClick();
         home.addToCartClick();
+        cart = home.goToCartPage();
 
     }
 
@@ -40,7 +41,6 @@ public class CartTests extends BaseTest {
         home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());
         home.increaseNumberOfProductsBought();
         Assert.assertNotEquals(home.checkIfNumberOfProductsIsNotEvenOne(), 1);
-        // TODO: 14.07.2024 Sprawdzić jeszcze raz asercję
     }
 
     @Test
@@ -68,11 +68,11 @@ public class CartTests extends BaseTest {
         cart = home.goToCartPage();
         cart.proceedToCheckoutButtonClick();
         cart.nameFieldFill("Evoss5");
-        cart.addressLineFill("Poznanska 13");   // TODO: 24.07.2024 adres obowiązkowy i opcjonalny 
+        cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
         cart.zipCodeFieldFill("62-100");
         cart.goToPaymentButtonClick();
-        Assert.assertEquals(cart.IsProvideYourCountryMessageIsDisplayed(), "Please provide your country.", "Provide your country message does not popup");
+        Assert.assertEquals(cart.isProvideYourCountryMessageIsDisplayed(), "Please provide your country.", "Provide your country message does not popup");
     }
 
     @Test
@@ -89,11 +89,11 @@ public class CartTests extends BaseTest {
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
         cart.zipCodeFieldFill("62-100");
-        service = new Service();
-        String randomCountry = service.getRandomValue(service.countries());
+        commonMethods = new CommonMethods();
+        String randomCountry = commonMethods.getRandomValue(commonMethods.countries());
         cart.countryFieldFill(randomCountry);
         cart.goToPaymentButtonClick();
-        Assert.assertTrue(cart.isPaymentMessageMethodMessageVisible(), "Enter Payment Mehod Message is not visible");
+        Assert.assertTrue(cart.isPaymentMessageMethodMessageVisible(), "Enter Payment Method Message is not visible");
     }
 
     @Test
@@ -110,15 +110,15 @@ public class CartTests extends BaseTest {
         cart.addressLineFill("Poznanska 13");
         cart.cityFieldFill("Konin");
         cart.zipCodeFieldFill("62-100");
-        service = new Service();
-        String randomCountry = service.getRandomValue(service.countries());
+        commonMethods = new CommonMethods();
+        String randomCountry = commonMethods.getRandomValue(commonMethods.countries());
         cart.countryFieldFill(randomCountry);
         cart.goToPaymentButtonClick();
         Assert.assertTrue(cart.isPaymentMessageMethodMessageVisible(), "Enter Payment Method Message is not visible");
         cart.fullnameFieldFill("Evo Evo");
-        cart.paymentCardFieldFill(service.getRandomValue(service.cardNumbers()));
-        cart.expirationCardFieldFill(service.expirationDate());
-        cart.securityCardFieldFill(service.randomSecurityCode());
+        cart.paymentCardFieldFill(commonMethods.getRandomValue(commonMethods.cardNumbers()));
+        cart.expirationCardFieldFill(commonMethods.expirationDate());
+        cart.securityCardFieldFill(commonMethods.randomSecurityCode());
         cart.reviewOrderButtonClick();
         cart.placeOrderButtonClick();
         Assert.assertTrue(cart.isCheckoutCompleteMessageVisible(), "Checkout complete message is not visible");
@@ -146,6 +146,14 @@ public class CartTests extends BaseTest {
         natives.closeApp();
     }
 
+    @Test
+    public void addRandomProductToCart2() {
+        String product = commonMethods.getRandomValue(commonMethods.product());
+        home.randomProductClick2(product);
+        home.addToCartClick();
+        cart = home.goToCartPage();
+        Assert.assertTrue(cart.isProductInCart().contains(product)); // TODO: 20.08.2024 Poprawić, ma być dynamiczny xpath
+    }
 }
 
 

@@ -1,6 +1,7 @@
-package Page.WebView;
+package Screen.WebView;
 
-import Page.BaseScreen;
+import Screen.BaseScreen;
+import Component.ContextHandler;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

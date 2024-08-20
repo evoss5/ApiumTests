@@ -1,6 +1,6 @@
 package Tests;
 
-import Page.Native.component.ProductList;
+import Component.ProductList;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -28,7 +28,7 @@ public class CatalogTests extends BaseTest{
     public void sortProductsByDesc() {
         login = home.goToLoginScreen();
         login.logInAsExistingUser();
-        login.loginButtonClick(); // TODO: 06.08.2024 przejście do HomeScreena, zmienić wywoływanie klas typu TopNavigationBar, WebView, żeby były w metodach w screenach a nie w BaseTest
+        login.loginButtonClick();
         home.sortProductButtonClick();
     }
 }

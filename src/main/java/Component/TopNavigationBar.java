@@ -1,7 +1,6 @@
-package Page.Native.component;
+package Component;
 
-import Page.BaseScreen;
-import Page.WebView.ContextHandler;
+import Screen.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
@@ -17,9 +16,9 @@ public class TopNavigationBar extends BaseScreen {
     private WebElement mainHeader;
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='open menu']\n")
     private WebElement hamburgerMenu;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"sort button\"]/android.widget.ImageView\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='sort button']/android.widget.ImageView\n")
     private WebElement sortButton;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"nameDesc\"]/android.widget.ImageView\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='nameDesc']/android.widget.ImageView\n")
     private WebElement sortProductsDesc;
 
     private ContextHandler webView;
@@ -34,7 +33,7 @@ public class TopNavigationBar extends BaseScreen {
     }
     public TopNavigationBar hamburgerMenuClick() {
         webView = new ContextHandler(driver);
-        webView.switchBackToNative();
+        webView.switchToNative();
         hamburgerMenu.click();
         return this;
     }

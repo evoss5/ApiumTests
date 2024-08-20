@@ -1,10 +1,15 @@
-package Page.Native;
+package Screen.Native;
 
-import Page.BaseScreen;
+import Device.Action.ScrollAction;
+import Screen.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CartScreen extends BaseScreen {
 
@@ -46,9 +51,14 @@ public class CartScreen extends BaseScreen {
     private WebElement checkoutCompleteMessage;
     @FindBy(xpath = "//span[@class='shopping_cart_badge']")
     private WebElement productsNumberInCart;
+    @AndroidFindBy(id = "product label\n")
+    private WebElement productLabel;
+
+    private ScrollAction scrollAction;
 
     public CartScreen(AndroidDriver driver) {
         super(driver);
+        this.scrollAction = new ScrollAction(driver);
     }
 
     public CartScreen removeItem() {
@@ -86,20 +96,18 @@ public class CartScreen extends BaseScreen {
         return this;
     }
 
-    public String IsProvideYourCountryMessageIsDisplayed() {
+    public String isProvideYourCountryMessageIsDisplayed() {
         return elementGetText(provideYourCountryMessage);
     }
 
     public CartScreen zipCodeFieldFill(String zipCode) {
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("Zip Code");
+        scrollAction.scrollToElementByText("Zip Code");
         sendKeysToElement(zipCodeField, zipCode);
         return this;
     }
 
     public CartScreen zipCodeButtonClick() {
-        natives = new NativeDeviceActions(driver);
-        natives.scrollToElementByText("ZipCode");
+        scrollAction.scrollToElementByText("ZipCode");
         clickElement(zipCodeField);
         return this;
     }
@@ -154,5 +162,10 @@ public class CartScreen extends BaseScreen {
         return true;
     }
 
+    public List<String> isProductInCart() {
+        List<WebElement> cartItems = driver.findElements(By.xpath("//android.widget.TextView[@content-desc=\"product label\"]\n"));
+        return cartItems.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
+    }
 }
-// TODO: 24.07.2024   24.07.2024 zmienić metodę remove

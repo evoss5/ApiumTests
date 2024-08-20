@@ -1,8 +1,9 @@
-package Page.WebView;
+package Screen.WebView;
 
-import Page.BaseScreen;
-import Page.Native.component.TopNavigationBar;
-import Page.Utilities;
+import Screen.BaseScreen;
+import Component.ContextHandler;
+import Component.TopNavigationBar;
+import Device.Action.SwipeAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,7 @@ public class HomeScreen extends BaseScreen {
     private Random random = new Random();
     public LoginScreen loginWeb;
     public ContextHandler webView;
-    public Utilities utilities;
+    public SwipeAction swipeAction;
     public TopNavigationBar topNavigationBar;
 
     @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-backpack']")
@@ -36,13 +37,13 @@ public class HomeScreen extends BaseScreen {
         super(driver);
         this.loginWeb = new LoginScreen(driver);
         this.webView = new ContextHandler(driver);
-        this.utilities = new Utilities(driver);
+        this.swipeAction = new SwipeAction(driver);
         this.topNavigationBar = new TopNavigationBar(driver);
     }
     public HomeScreen addProductToTheCartClick() {
         clickElement(addProductToCart);
-        webView.switchBackToNative();
-        utilities.swipeUp(2);
+        webView.switchToNative();
+        swipeAction.swipeUp(2);
         webView.switchToWebView();
         return this;
     }
@@ -81,7 +82,7 @@ public class HomeScreen extends BaseScreen {
         return new CartScreen(driver);
     }
     public HomeScreen goToTheBottomOfThePage() {
-        utilities.swipeDown(10);
+        swipeAction.swipeDown(10);
         return this;
     }
     public boolean isCartButtonVisible() {

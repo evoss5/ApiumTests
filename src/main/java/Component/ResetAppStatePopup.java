@@ -1,6 +1,6 @@
-package Page.Native.component;
+package Component;
 
-import Page.BaseScreen;
+import Screen.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;

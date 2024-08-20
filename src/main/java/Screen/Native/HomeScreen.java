@@ -1,25 +1,21 @@
-package Page.Native;
+package Screen.Native;
 
-import Page.BaseScreen;
-import Page.Native.component.*;
-import Page.Utilities;
-import Page.WebView.ContextHandler;
+import Component.*;
+import Device.Action.AndroidActionBar;
+import Device.Action.ScrollAction;
+import Device.Action.SwipeAction;
+import Screen.BaseScreen;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 import java.util.Random;
 
 public class HomeScreen extends BaseScreen {
-    public ContextHandler webView;
-
-    public TopNavigationBar topNavigationBar;
-    public AndroidActionBar androidActionBar;
-    public LeftMenuBar leftMenuBar;
-    public Utilities utilities;
 
 
     @AndroidFindBy(uiAutomator = "new UiSelector().className(\"android.view.ViewGroup\").instance(47)\n")
@@ -28,7 +24,7 @@ public class HomeScreen extends BaseScreen {
     private WebElement logInButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Add To Cart']\n")
     private WebElement addToCartButton;
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"counter plus button\"]/android.widget.ImageView\n")
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='counter plus button']/android.widget.ImageView\n")
     private WebElement counterPlusButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='1']\n")
     private WebElement numberOfProducts;
@@ -54,18 +50,24 @@ public class HomeScreen extends BaseScreen {
     private WebElement productHighlightsText;
 
 
+    public ContextHandler webView;
+    public TopNavigationBar topNavigationBar;
+    public AndroidActionBar androidActionBar;
+    public LeftMenuBar leftMenuBar;
+    public SwipeAction swipeAction;
+    public ScrollAction scrollAction;
+
+
     public HomeScreen(AndroidDriver driver) {
         super(driver);
         this.topNavigationBar = new TopNavigationBar(driver);
         this.leftMenuBar = new LeftMenuBar(driver);
         this.androidActionBar = new AndroidActionBar(driver);
         this.webView = new ContextHandler(driver);
-        this.natives = new NativeDeviceActions(driver);
-        this.utilities = new Utilities(driver);
-
-
+        this.natives = new DeviceAction(driver);
+        this.swipeAction = new SwipeAction(driver);
+        this.scrollAction = new ScrollAction(driver);
     }
-
 
     public HomeScreen logInButtonClick() {
         clickElement(logInButton);
@@ -91,7 +93,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public HomeScreen addToCartClick() {
-        natives.scrollToElementByText("Add To Cart");
+        scrollAction.scrollToElementByText("Add To Cart");
         clickElement(addToCartButton);
         return this;
     }
@@ -101,7 +103,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public void increaseNumberOfProductsBought() {
-        natives.scrollToElementByText("Add To Cart");
+        scrollAction.scrollToElementByText("Add To Cart");
         clickElement(counterPlusButton);
     }
 
@@ -115,7 +117,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public HomeScreen logOutFromAccount() {
-        webView.switchBackToNative();
+        webView.switchToNative();
         topNavigationBar.hamburgerMenuClick();
         clickElement(logOutButton);
 
@@ -138,9 +140,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public HomeScreen chooseProductsColor(String color) throws InterruptedException {
-//        WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n"));
-        Thread.sleep(2000);
-        WebElement productColor = driver.findElement(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n"));
+        WebElement productColor = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.view.ViewGroup[@content-desc='" + color + " circle']/android.view.ViewGroup\n")));
         clickElement(productColor);
         return this;
     }
@@ -161,10 +161,10 @@ public class HomeScreen extends BaseScreen {
         return true;
     }
 
-    public Page.WebView.HomeScreen goToWebView() {
+    public Screen.WebView.HomeScreen goToWebView() {
         topNavigationBar.hamburgerMenuClick();
         clickElement(webViewButton);
-        return new Page.WebView.HomeScreen(driver);
+        return new Screen.WebView.HomeScreen(driver);
     }
 
     public HomeScreen urlFieldFill() {
@@ -172,10 +172,10 @@ public class HomeScreen extends BaseScreen {
         return this;
     }
 
-    public Page.WebView.LoginScreen goToSiteButtonClick() {
+    public Screen.WebView.LoginScreen goToSiteButtonClick() {
         clickElement(goToSiteButton);
         webView.switchToWebView();
-        return new Page.WebView.LoginScreen(driver);
+        return new Screen.WebView.LoginScreen(driver);
     }
 
     public HomeScreen aboutButtonClick() {
@@ -184,7 +184,7 @@ public class HomeScreen extends BaseScreen {
     }
 
     public String productHighlightsGetText() {
-        natives.scrollToElementByText("Product Highlights");
+        scrollAction.scrollToElementByText("Product Highlights");
         return elementGetText(productHighlightsText);
     }
 
@@ -196,7 +196,7 @@ public class HomeScreen extends BaseScreen {
 
     public SauceVideo goToSauceVideo() {
         topNavigationBar.hamburgerMenuClick();
-        natives.scrollToElementByText("Sauce Bot Video");
+        scrollAction.scrollToElementByText("Sauce Bot Video");
         leftMenuBar.sauceBoVideoButtonClick();
         webView.switchToWebView();
         return new SauceVideo(driver);
@@ -231,6 +231,7 @@ public class HomeScreen extends BaseScreen {
         leftMenuBar.biometricsMenuClick();
         return new LeftMenuBar(driver);
     }
+
     public HomeScreen randomProductClick() {
         List<WebElement> productList = driver.findElements(By.xpath("(//android.view.ViewGroup[@content-desc=\"store item\"])"));
         Random random = new Random();
@@ -239,13 +240,24 @@ public class HomeScreen extends BaseScreen {
         clickElement(list);
         return this;
     }
+
     public HomeScreen sortProductButtonClick() {
         topNavigationBar.sortButtonClick();
         topNavigationBar.sortProductsAscOrDesc();
         return this;
     }
 
-        }
+    public HomeScreen randomProductClick2(String product) {
+        WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@content-desc='store item text' and @text='" + product + "']\n"));
+        clickElement(element);
+        return this;
+    }
+    public By randomThing() {
+        return By.xpath("");   // TODO: 20.08.2024 Przykład metody z xPathem 
+    }
+    }
+
+
 
 
 

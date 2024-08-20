@@ -1,8 +1,8 @@
 package Tests;
 
-import Page.WebView.CartScreen;
-import Page.WebView.HomeScreen;
-import Page.WebView.LoginScreen;
+import Screen.WebView.CartScreen;
+import Screen.WebView.HomeScreen;
+import Screen.WebView.LoginScreen;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,7 +20,6 @@ public class WebViewTests extends BaseTest {
         home.urlFieldFill();
         loginWeb = home.goToSiteButtonClick();
         String context = driver.getContext();
-        System.out.println("Obecny context to : " + context);
         Assert.assertTrue(loginWeb.isLoginButtonClickable(), "Login button is not clickable");
     }
 
@@ -44,7 +43,7 @@ public class WebViewTests extends BaseTest {
         loginWeb.passwordField("secret_sauce");
         homeWeb = loginWeb.loginButtonClick();
         homeWeb.addProductToTheCartClick();
-        Assert.assertTrue(homeWeb.isProductShownInTheCart(), "Product is not in the cart"); // TODO: 06.08.2024 zmiana kontekstu 
+        Assert.assertTrue(homeWeb.isProductShownInTheCart(), "Product is not in the cart");
         Assert.assertTrue(homeWeb.isCartButtonVisible());
     }
 
@@ -55,7 +54,7 @@ public class WebViewTests extends BaseTest {
         loginWeb = home.goToSiteButtonClick();
         loginWeb.userNameFieldFill("standard_user");
         loginWeb.passwordField("secret_sauce");
-        homeWeb = loginWeb.loginButtonClick();         // TODO: 06.08.2024 Zapytać Chrystiana o zmianę kontekstu
+        homeWeb = loginWeb.loginButtonClick();
         homeWeb.sortProductsBy();
         Assert.assertTrue(homeWeb.isSauceLabsBackpackIconVisible());
     }

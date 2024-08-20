@@ -1,6 +1,6 @@
-package Page.WebView;
+package Component;
 
-import Page.BaseScreen;
+import Screen.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 
 import java.util.Set;
@@ -21,7 +21,7 @@ public class ContextHandler extends BaseScreen {
         return this;
     }
 
-    public ContextHandler switchBackToNative() {
+    public ContextHandler switchToNative() {
         Set<String> contextNames = driver.getContextHandles();
         String lastContextView = (String) contextNames.toArray()[contextNames.size() - 1];
         if (lastContextView.contains("WEBVIEW_")) {
@@ -29,6 +29,8 @@ public class ContextHandler extends BaseScreen {
         }
         return this;
     }
+    // TODO: 19.08.2024 Zrobić jedną prywatną metodę oraz dwie publiczne na zmianę kontekstu
+
 }
 
 
