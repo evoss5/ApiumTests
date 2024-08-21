@@ -12,24 +12,28 @@ public class ContextHandler extends BaseScreen {
     }
 
     public ContextHandler switchToWebView() {
-        Set<String> contextNames = driver.getContextHandles();
-        String lastContextView = (String) contextNames.toArray()[contextNames.size() - 1];
-
-        if (lastContextView.contains("WEBVIEW_") || lastContextView.contains("WEBVIEW_com.xxxxxx.android.mobile.xxxxx")) {
-            driver.context(lastContextView);
-        }
+        switchContext("WEBVIEW");
         return this;
     }
 
     public ContextHandler switchToNative() {
-        Set<String> contextNames = driver.getContextHandles();
-        String lastContextView = (String) contextNames.toArray()[contextNames.size() - 1];
-        if (lastContextView.contains("WEBVIEW_")) {
-            driver.context("NATIVE_APP");
-        }
+        switchContext("NATIVE_APP");
         return this;
     }
-    // TODO: 19.08.2024 Zrobić jedną prywatną metodę oraz dwie publiczne na zmianę kontekstu
+    // TODO: 19.08.2024 Zrobić jedną prywatną metodę oraz dwie publiczne na zmianę kontekstu (zrobione)
+
+    private void switchContext(String contextType) {
+        Set<String> contextNames = driver.getContextHandles();
+        for (String contextName : contextNames) {
+            if (contextType.equals("WEBVIEW") && (contextName.contains("WEBVIEW_") || contextName.contains("WEBVIEW_com.xxxxxx.android.mobile.xxxxx"))) {
+                driver.context(contextName);
+                return;
+            } else if (contextType.equals("NATIVE_APP") && contextName.equals("NATIVE_APP")) {
+                driver.context("NATIVE_APP");
+                return;
+            }
+        }
+    }
 
 }
 

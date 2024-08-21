@@ -35,6 +35,8 @@ public class LeftMenuBar extends BaseScreen {
     private WebElement biometricMessage;
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id='android:id/button1']\n")
     private WebElement biometricOkMessage;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='QR Code Scanner']\n")
+    private WebElement qrCodeScannerHeader;
 
     public LeftMenuBar(AndroidDriver driver) {
         super(driver);
@@ -100,6 +102,10 @@ public class LeftMenuBar extends BaseScreen {
             clickElement(biometricOkMessage);
         }
         return driver.findElement(By.xpath("//android.widget.TextView[@text=\"Allow login with FingerPrint\"]\n")).getText();
+    }
+    public boolean isQRCodeScannerHeaderVisible() {
+        isElementVisible(qrCodeScannerHeader);
+        return true;
     }
 
 }

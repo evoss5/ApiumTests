@@ -152,7 +152,15 @@ public class CartTests extends BaseTest {
         home.randomProductClick2(product);
         home.addToCartClick();
         cart = home.goToCartPage();
-        Assert.assertTrue(cart.isProductInCart().contains(product)); // TODO: 20.08.2024 Poprawić, ma być dynamiczny xpath
+        Assert.assertTrue(cart.isProductInCart().contains(product)); // TODO: 20.08.2024 Poprawić, ma być dynamiczny xpath (zrobione)
+    }
+    @Test
+    public void addRandomProductToCart3() throws InterruptedException {
+        String product = commonMethods.getRandomValue(commonMethods.product());
+        home.randomProductClick2(product);
+        home.addToCartClick();
+        cart = home.goToCartPage();
+        Assert.assertTrue(cart.isProductInCart2(product)); // TODO: 20.08.2024 Poprawić, ma być dynamiczny xpath (zrobione)
     }
 }
 
