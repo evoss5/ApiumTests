@@ -1,7 +1,9 @@
 package Screen.Native;
 
+import Component.ContextHandler;
 import Device.Action.ScrollAction;
 import Screen.BaseScreen;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
@@ -55,10 +57,12 @@ public class CartScreen extends BaseScreen {
     private WebElement productLabel;
 
     private ScrollAction scrollAction;
+    private ContextHandler contextHandler;
 
     public CartScreen(AndroidDriver driver) {
         super(driver);
         this.scrollAction = new ScrollAction(driver);
+        this.contextHandler = new ContextHandler(driver);
     }
 
     public CartScreen removeItem() {
@@ -167,5 +171,16 @@ public class CartScreen extends BaseScreen {
         return cartItems.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
+    }
+    public boolean isProductInCart2(String product) throws InterruptedException {
+//        Thread.sleep(2000);
+//        WebElement element = driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + product +"\")\n"));
+//        isElementVisible(element);
+        isElementVisible(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + product + "\")"));
+        return true;
+    }
+
+    public By product() {
+        return By.xpath("//android.widget.TextView[@content-desc=\"product label\"]\n");
     }
 }

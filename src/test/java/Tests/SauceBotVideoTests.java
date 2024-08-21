@@ -39,5 +39,15 @@ public class SauceBotVideoTests extends BaseTest {
         sauceVideo.videoVolumeUpClick();
         Assert.assertTrue(sauceVideo.isMuteSoundIconVisible(), "Sound is not mute");
     }
+    @Test
+    public void forwardVideo2() {
+        sauceVideo = home.goToSauceVideo();
+        sauceVideo.videoStopButtonClick();
+        int currentVideoTime = sauceVideo.getCurrentVideoTime2();
+        sauceVideo.videoForwardButtonClick();
+        int endTime = sauceVideo.getCurrentVideoTime2();
+        int timeDifference = endTime - currentVideoTime;
+        Assert.assertEquals(timeDifference, 15);
+    }
 }
 

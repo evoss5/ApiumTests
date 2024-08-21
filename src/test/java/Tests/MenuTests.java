@@ -35,7 +35,8 @@ public class MenuTests extends BaseTest {
     @Test
     public void chooseQRcodeScannerInMenu() {
         leftMenuBar = home.goToQRCodeScanner();
-    } // TODO: 19.08.2024 zrobić asercję do QR Scanner
+        Assert.assertTrue(leftMenuBar.isQRCodeScannerHeaderVisible(), "QR Scanner Header is not visible");
+    } // TODO: 19.08.2024 zrobić asercję do QR Scanner (zrobione)
     @Test
     public void biometricsMenu() {
         leftMenuBar = home.goToBiometricsMenu();

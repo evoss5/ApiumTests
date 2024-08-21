@@ -130,6 +130,15 @@ public class BaseScreen {
             return false;
         }
     }
+    public boolean isElementVisible(By locator) {
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            return true;
+        } catch (NoSuchElementException | TimeoutException e) {
+            logger.warning("Element is not present:  + e.getMessage()");
+            return false;
+        }
+    }
 
 
 }
