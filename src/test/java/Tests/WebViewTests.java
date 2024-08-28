@@ -7,9 +7,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class WebViewTests extends BaseTest {
-    public LoginScreen loginWeb;
-    public HomeScreen homeWeb;
-    public CartScreen cartWeb;
+    private LoginScreen loginWeb;
+    private HomeScreen homeWeb;
+    private CartScreen cartWeb;
 
 
 
@@ -114,9 +114,18 @@ public class WebViewTests extends BaseTest {
     }
 
     @Test
-    public void switchContextToWebView() {
+    public void TestingThat() {
+        home.chooseProductToBuy(commonMethods.getRandomValue(commonMethods.product()));
+        home.addToCartClick();
+        Assert.assertNotEquals(home.productsNumberInCartGetText(), "0");
+        home.addToCartClick();
         home.goToWebView();
-
+        home.urlFieldFill();
+        loginWeb = home.goToSiteButtonClick();
+        loginWeb.userNameFieldFill("standard_user");
+        loginWeb.passwordField("secret_sauce");
+        homeWeb = loginWeb.loginButtonClick();
+        homeWeb.addProductToTheCartClick();
     }
 
 }

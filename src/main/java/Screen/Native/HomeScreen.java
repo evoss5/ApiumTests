@@ -48,6 +48,8 @@ public class HomeScreen extends BaseScreen {
     private WebElement aboutButton;
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Product Highlights']\n")
     private WebElement productHighlightsText;
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"1\"]\n")
+    private WebElement productsNumberInCart;
 
 
     public ContextHandler webView;
@@ -247,13 +249,15 @@ public class HomeScreen extends BaseScreen {
         return this;
     }
 
-    public HomeScreen randomProductClick2(String product) {
+    public HomeScreen randomProductClick(String product) {
         WebElement element = driver.findElement(By.xpath("//android.widget.TextView[@content-desc='store item text' and @text='" + product + "']\n"));
         clickElement(element);
         return this;
     }
-    public By randomThing() {
-        return By.xpath("");   // TODO: 20.08.2024 Przykład metody z xPathem 
+    public String productsNumberInCartGetText() {
+        String s = elementGetText(productsNumberInCart);
+        System.out.println(s);
+        return s;
     }
     }
 

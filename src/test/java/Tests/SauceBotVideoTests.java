@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class SauceBotVideoTests extends BaseTest {
 
-    public SauceVideo sauceVideo;
+    private SauceVideo sauceVideo;
 
     @Test
     public void getYoutubeWindowFullscreen() throws InterruptedException {
@@ -16,17 +16,7 @@ public class SauceBotVideoTests extends BaseTest {
         driver.switchTo().frame(0);
         sauceVideo.exitFullscreenButtonClick();
     }
-    @Test
-    public void forwardVideo() {
-        sauceVideo = home.goToSauceVideo();
-        sauceVideo.videoStopButtonClick();
-        double currentVideoTime = sauceVideo.getCurrentVideoTime();
-        sauceVideo.videoForwardButtonClick();
-        double endTime = sauceVideo.getCurrentVideoTime();
-        double timeDifference = endTime - currentVideoTime;
-        double roundedTimeDifference = Math.round(timeDifference);
-        Assert.assertEquals(roundedTimeDifference, 15);
-    }
+
     @Test
     public void stopVideo() {
         sauceVideo = home.goToSauceVideo();
@@ -40,12 +30,12 @@ public class SauceBotVideoTests extends BaseTest {
         Assert.assertTrue(sauceVideo.isMuteSoundIconVisible(), "Sound is not mute");
     }
     @Test
-    public void forwardVideo2() {
+    public void forwardVideo() {
         sauceVideo = home.goToSauceVideo();
         sauceVideo.videoStopButtonClick();
-        int currentVideoTime = sauceVideo.getCurrentVideoTime2();
+        int currentVideoTime = sauceVideo.getCurrentVideoTime();
         sauceVideo.videoForwardButtonClick();
-        int endTime = sauceVideo.getCurrentVideoTime2();
+        int endTime = sauceVideo.getCurrentVideoTime();
         int timeDifference = endTime - currentVideoTime;
         Assert.assertEquals(timeDifference, 15);
     }
