@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class CartTests extends BaseTest {
 
-    public CartScreen cart;
+    private CartScreen cart;
 
 
 
@@ -19,13 +19,6 @@ public class CartTests extends BaseTest {
         cart = home.goToCartPage();
         cart.removeItem();
         Assert.assertTrue(cart.isNoItemsInCartMessageVisible(), "There are still some items in Cart");
-    }
-
-    @Test
-    public void addProductToCart() {
-        home.chooseProductToBuy(ProductList.SAUCE_LABS_BACKPACK.getProductName());;
-        home.addToCartClick();
-        Assert.assertEquals(home.checkIfNumberOfProductsIsNotEvenOne(), 1);
     }
 
     @Test
@@ -147,20 +140,12 @@ public class CartTests extends BaseTest {
     }
 
     @Test
-    public void addRandomProductToCart2() {
-        String product = commonMethods.getRandomValue(commonMethods.product());
-        home.randomProductClick2(product);
-        home.addToCartClick();
-        cart = home.goToCartPage();
-        Assert.assertTrue(cart.isProductInCart().contains(product)); // TODO: 20.08.2024 Poprawić, ma być dynamiczny xpath (zrobione)
-    }
-    @Test
     public void addRandomProductToCart3() throws InterruptedException {
         String product = commonMethods.getRandomValue(commonMethods.product());
-        home.randomProductClick2(product);
+        home.randomProductClick(product);
         home.addToCartClick();
         cart = home.goToCartPage();
-        Assert.assertTrue(cart.isProductInCart2(product)); // TODO: 20.08.2024 Poprawić, ma być dynamiczny xpath (zrobione)
+        Assert.assertTrue(cart.isProductInCart(product));
     }
 }
 

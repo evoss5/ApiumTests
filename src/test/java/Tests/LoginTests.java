@@ -6,8 +6,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class LoginTests extends BaseTest {
-    public CommonMethods commonMethods;
-
+    private CommonMethods commonMethods;
 
 
     @Test
@@ -26,8 +25,9 @@ public class LoginTests extends BaseTest {
         login.loginButtonClick();
         Assert.assertTrue(home.isMainBannerVisible(), "Main banner is not visible");
     }
+
     @Test
-    public void logOutFromAccount()  {
+    public void logOutFromAccount() {
         login = home.goToLoginScreen();
         login.logInAsExistingUser();
         login.loginButtonClick();
@@ -36,6 +36,7 @@ public class LoginTests extends BaseTest {
         home.logOutAcceptButtonClick();
         Assert.assertTrue(home.isSuccessfulyLoggedOutMessageVisible(), "Successfuly Logged Out messsage is not visible");
     }
+
     @Test
     private void logInByCredentials() throws IOException {
         login = home.goToLoginPage();

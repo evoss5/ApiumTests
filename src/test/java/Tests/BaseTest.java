@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class BaseTest {
-    public AndroidDriver driver;
+    protected AndroidDriver driver;
     protected HomeScreen home;
     protected LoginScreen login;
     protected DeviceAction natives;
@@ -27,8 +27,6 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void setup() throws MalformedURLException {
         String appiumServerUrl = "http://127.0.0.1:4723";
-
-
         DesiredCapabilities dc = new DesiredCapabilities();
         dc.setCapability("platformName", "Android");
         dc.setCapability("appium:automationName", "uiAutomator2");
@@ -38,15 +36,10 @@ public class BaseTest {
         dc.setCapability("locationServiceEnabled", true);
         dc.setCapability("locationServiceAuthorized", true);
 
-
         driver = new AndroidDriver(new URL(appiumServerUrl), dc);
         natives = new DeviceAction(driver);
         home = new HomeScreen(driver);
         commonMethods = new CommonMethods();
-
-
-
-
     }
 
 

@@ -10,9 +10,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class CartScreen extends BaseScreen {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Remove Item']\n")
@@ -166,18 +163,15 @@ public class CartScreen extends BaseScreen {
         return true;
     }
 
-    public List<String> isProductInCart() {
-        List<WebElement> cartItems = driver.findElements(By.xpath("//android.widget.TextView[@content-desc=\"product label\"]\n"));
-        return cartItems.stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
-    }
-    public boolean isProductInCart2(String product) throws InterruptedException {
-//        Thread.sleep(2000);
-//        WebElement element = driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + product +"\")\n"));
-//        isElementVisible(element);
+
+    public boolean isProductInCart(String product) {
         isElementVisible(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + product + "\")"));
         return true;
+    }
+    public String productsNumberInCartGetText() {
+        String s = elementGetText(productsNumberInCart);
+        System.out.println(s);
+        return s;
     }
 
     public By product() {

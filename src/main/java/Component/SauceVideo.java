@@ -4,7 +4,6 @@ import Screen.BaseScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -98,25 +97,16 @@ public class SauceVideo extends BaseScreen {
         clickElement(exitFullscreenButton);
         return this;
     }
-    public double getCurrentVideoTime() {  // TODO: 19.08.2024 znaleźć alternatywne obejście (zrobione)
-        webView.switchToWebView();
-        WebElement element = driver.findElement(By.tagName("iframe"));
-        driver.switchTo().frame(element);
-        JavascriptExecutor js =  driver;
-        return (double) js.executeScript(
-                "return document.querySelector('video').currentTime;"
-        );
-    }
 
-    public int getCurrentVideoTime2() {
+    public int getCurrentVideoTime() {
         webView.switchToWebView();
         WebElement element = driver.findElement(By.tagName("iframe"));
         driver.switchTo().frame(element);
         String time = elementGetText(currentTimeStamp);
         System.out.println("Time: " + time);
-        int i = convertTimeToSeconds(time);
-        return i;
+        return convertTimeToSeconds(time);
     }
+
     private int convertTimeToSeconds(String time) {
         String[] parts = time.split(":");
         int minutes = Integer.parseInt(parts[0]);
